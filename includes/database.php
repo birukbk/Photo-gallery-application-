@@ -43,6 +43,6 @@ class MySQLDatabase {
     }
 
 }
-$database = new MySQLDatabase();
+$database = new MySQLDatabase($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_name']);
 
 ?>
