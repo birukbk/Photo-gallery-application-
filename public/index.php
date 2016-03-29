@@ -8,6 +8,6 @@ if (isset($database)) {
 	echo "false";
 }
 echo "<br/>";
-echo $database->mysqlPrep("It's  working?");
+echo $database->escapeValue("It's  working?");
 
  ?>

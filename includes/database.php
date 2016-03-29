@@ -37,9 +37,16 @@ class MySQLDatabase {
       }
     }
 
-    public function mysqlPrep($string){
+    public function escapeValue($string){
       $escapedString = mysqli_real_escape_string($this->connection,$string);
       return $escapedString;
+    }
+    public function fetchArray($resultSet){
+      return mysqli_fetch_array($resultSet);
+    }
+
+    public function insertId(){
+      return mysqli_insert_id($this->connection);
     }
 
 }
