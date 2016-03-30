@@ -1,5 +1,7 @@
 <?php 
-require_once("../includes/database.php");
+require_once("includes/initialize.php");
+include("includes/head.html");
+
 
 if (isset($database)) {
 	echo "ture";
@@ -10,4 +12,7 @@ if (isset($database)) {
 echo "<br/>";
 echo $database->escapeValue("It's  working?");
 
+
+//include("includes/footer.html");
  ?>
+ 

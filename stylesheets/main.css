@@ -1,0 +1,63 @@
+/*css for navigation bar*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    color: #1da73b;
+}
+.active {
+    background-color: #4CAF50;
+}
+
+/*css for the tables*/
+
+
+.contentTable,.welcom_contentTable
+{
+	border:0.5px solid black;
+}
+.contentTable td,.contentTable th
+{
+	border-left:1px solid black;
+	border-top:1px solid black;
+	text-align:left;
+}
+.contentTable th
+{
+	background-color:#1da73b;
+	text-align: center;
+}
+.contentTable td:last-child
+{
+	text-align: center;	
+}
+.welcom_contentTable{
+	width: 50%;
+	border-bottom: 1px solid black;
+}
+.welcom_contentTable th
+{
+	background-color:#1da73b;
+	text-align: center;
+}
+
+
+
+
