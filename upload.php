@@ -2,9 +2,13 @@
 echo "<pre>";
 print_r($_FILES['userfile']);
 
+echo $_POST["title"];
+echo $_POST["description"];
+
 echo "<pre>";
 
  ?>
+
 
 <?php
 
@@ -49,7 +53,7 @@ if(isset($_POST['submit'])) {
                 <div>
                  <input name="userfile" type="file" id="fileinput" />
                  
-                 <p>Title:<input type="text" name="title" value="" size="37"> </p> 
+                 <p>Title:<input type="text" name="title" size="37"> </p> 
           
                  <p>Description:</p><textarea name="description" rows="5" cols="40"></textarea></br> 
             
