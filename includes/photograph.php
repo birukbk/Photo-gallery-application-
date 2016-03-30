@@ -1,6 +1,6 @@
 <?php 
-require_once('includes/intialize.php');
-class Photograph extends database{
+require_once("includes/initialize.php");
+class Photograph extends MySQLDatabase{
 	protected static $table_name="photographgallery";
 	protected static $db_fields=array('id', 'filename', 'type', 'size', 'description','title');
 	public $id;
@@ -11,7 +11,7 @@ class Photograph extends database{
 	public $title;
 	
 	private $temp_path;
-    protected $upload_dir="images";
+    protected $upload_dir="uploads";
     public $errors=array();
 
     protected $upload_errors = array(
@@ -54,9 +54,13 @@ class Photograph extends database{
 			// Can't save if there are pre-existing errors
 		  if(!empty($this->errors)) { return false; }
 		  
-			// Make sure the caption is not too long for the DB
-		  if(strlen($this->caption) > 255) {
-				$this->errors[] = "The caption can only be 255 characters long.";
+			// Make sure the description is not too long for the DB
+		  if(strlen($this->description) > 255) {
+				$this->errors[] = "The description can only be 255 characters long.";
+				return false;
+			}
+			if(strlen($this->title) > 255) {
+				$this->errors[] = "The title can only be 255 characters long.";
 				return false;
 			}
 		
@@ -67,7 +71,7 @@ class Photograph extends database{
 		  }
 			
 			// Determine the target_path
-		  $target_path = SITE_ROOT .DS. 'public' .DS. $this->upload_dir .DS. $this->filename;
+		  $target_path = $this->upload_dir .DS. $this->filename;
 		  
 		  // Make sure a file doesn't already exist in the target location
 		  if(file_exists($target_path)) {
