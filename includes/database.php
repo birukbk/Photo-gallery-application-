@@ -37,17 +37,24 @@ class MySQLDatabase {
       }
     }
 
-    public function escapeValue($string){
-      $escapedString = mysqli_real_escape_string($this->connection,$string);
-      return $escapedString;
-    }
-    public function fetchArray($resultSet){
-      return mysqli_fetch_array($resultSet);
-    }
+   
+  public function fetch_array($result_set) {
+    return mysql_fetch_array($result_set);
+  }
+  
+  public function num_rows($result_set) {
+   return mysql_num_rows($result_set);
+  }
+  
+  public function insert_id() {
+    // get the last id inserted over the current db connection
+    return mysql_insert_id($this->connection);
+  }
+  
+  public function affected_rows() {
+    return mysql_affected_rows($this->connection);
+  }
 
-    public function insertId(){
-      return mysqli_insert_id($this->connection);
-    }
 
 }
 $database = new MySQLDatabase($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_name']);
