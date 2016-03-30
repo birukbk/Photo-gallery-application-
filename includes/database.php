@@ -1,5 +1,6 @@
 <?php
-require_once("config.php");
+require_once("includes/config.php");
+require_once("includes/initialize.php");
 
 class MySQLDatabase {
 
@@ -33,8 +34,13 @@ class MySQLDatabase {
 
     private function confirmQuery($result){
       if (!$result) {
-        die("Database query failed!");
+        die("Database query ffailed!");
       }
+    }
+
+    public function escape_value($string){
+      $escaped_string= mysqli_real_escape_string($this->connection, $string);
+      return $escaped_string;
     }
 
    

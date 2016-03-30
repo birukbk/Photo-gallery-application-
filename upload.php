@@ -1,49 +1,61 @@
 <?php 
-echo "<pre>";
-print_r($_FILES['userfile']);
-
-echo $_POST["title"];
-echo $_POST["description"];
+require_once("includes/config.php");
+require_once("includes/initialize.php");
 
 echo "<pre>";
+//print_r($_FILES[ç]);
+
+echo "title:" .$_POST["title"];
+echo "<br/>";
+echo "Description:" .$_POST["description"];
+
+echo "<pre>";
+
+
 
  ?>
 
 
 <?php
 
-// In an application, this could be moved to a config file
-$upload_errors = array(
-	// http://www.php.net/manual/en/features.file-upload.errors.php
-		UPLOAD_ERR_OK 				=> "No errors.",
-		UPLOAD_ERR_INI_SIZE  	=> "Larger than upload_max_filesize.",
-		UPLOAD_ERR_FORM_SIZE 	=> "Larger than form MAX_FILE_SIZE.",
-		UPLOAD_ERR_PARTIAL 		=> "Partial upload.",
-		UPLOAD_ERR_NO_FILE 		=> "No file.",
-		UPLOAD_ERR_NO_TMP_DIR => "No temporary directory.",
-		UPLOAD_ERR_CANT_WRITE => "Can't write to disk.",
-		UPLOAD_ERR_EXTENSION 	=> "File upload stopped by extension."
-		);
-
+$message="";
 if(isset($_POST['submit'])) {
-	// process the form data
-	$tmp_file = $_FILES['userfile']['tmp_name'];
-	$target_file = basename($_FILES['userfile']['name']);
-	$upload_dir = "uploads";
-  
-	// You will probably want to first use file_exists() to make sure
-	// there isn't already a file by the same name.
-	
-	// move_uploaded_file will return false if $tmp_file is not a valid upload file 
-	// or if it cannot be moved for any other reason
-	if(move_uploaded_file($tmp_file, $upload_dir."/".$target_file)) {
+	$photo = new Photograph();
+	$photo->description = $_POST['description'];
+	$photo->title = $_POST['title'];
+	$photo->attach_file($_FILES['userfile']);
+	if ($photo->save()) {
 		$message = "File uploaded successfully.";
-	} else {
-		$error = $_FILES['userfile']['error'];
-		$message = $upload_errors[$error];
+	}else
+	{
+		$message = join("<br />",$photo->errors);
 	}
+
+	//echo $this->description;
+
+}
+
+
+
+// if(isset($_POST['submit'])) {
+// 	// process the form data
+// 	$tmp_file = $_FILES['userfile']['tmp_name'];
+// 	$target_file = basename($_FILES['userfile']['name']);
+// 	$upload_dir = "uploads";
+  
+// 	// You will probably want to first use file_exists() to make sure
+// 	// there isn't already a file by the same name.
 	
-}	
+// 	// move_uploaded_file will return false if $tmp_file is not a valid upload file 
+// 	// or if it cannot be moved for any other reason
+// 	if(move_uploaded_file($tmp_file, $upload_dir."/".$target_file)) {
+// 		$message = "File uploaded successfully.";
+// 	} else {
+// 		$error = $_FILES['userfile']['error'];
+// 		$message = $upload_errors[$error];
+// 	}
+	
+// }	
 
 ?>
 
