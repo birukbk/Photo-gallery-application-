@@ -48,7 +48,7 @@ class MySQLDatabase {
   
   public function insert_id() {
     // get the last id inserted over the current db connection
-    return mysql_insert_id($this->connection);
+    return mysqli_insert_id($this->connection);
   }
   
   public function affected_rows() {
