@@ -17,8 +17,9 @@ $a="'";
 $bo="(";
 $bc=")";
 
-$sql="INSERT INTO photographgallery (filename,type,size,description,title)"." VALUES ".$bo.$a."wowo".$a.$c.$a."jpg".$a.$c.$a."100".$a.$c.$a."ppppp".$a.$c.$a."pink".$a.$bc;
-
+// $sql="INSERT INTO photographgallery (filename,type,size,description,title)"." VALUES ".$bo.$a."wowo".$a.$c.$a."jpg".$a.$c.$a."100".$a.$c.$a."ppppp".$a.$c.$a."pink".$a.$bc;
+ $sql ='INSERT INTO photographgallery '.'(filename,type,size,description,title)';
+  $sql .='VALUES (\''.$filename.'\', \''.$type.'\',\''.$size.'\',\''.$description.'\',\''.$title.'\')';
           
                      // .VALUES (".$filename.",".$type.",".$size.",".$description.",".$title;
 

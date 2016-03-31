@@ -41,6 +41,8 @@ class Photograph{
 		  $this->filename   = basename($file['name']);
 		  $this->type       = $file['type'];
 		  $this->size       = $file['size'];
+		  $this->description=$_POST["description"];
+		  $this->title       = $_POST["title"];
 			return true;
 
 		}
@@ -125,12 +127,18 @@ class Photograph{
 	 //  $sql .= ") VALUES ('";
 		// $sql .= join("', '", array_values($attributes));
 		// $sql .= "')";
-		// 
+		
+
+
+		//  partially working fixed tes query.
 		$sql = $sql = "INSERT INTO ".self::$table_name." (";
 		       $sql .="filename,type,size,description,title)
                         VALUES ('";
                $sql .= ",";
                $sql .= "flower','jpg','12','beautiful flower','blue flower')";
+               
+  // $sql ='INSERT INTO photographgallery '.' (filename,type,size,description,title)';
+  // $sql .='VALUES (\''.$filename.'\', \''.$type.'\',\''.$size.'\',\''.$description.'\',\''.$title.'\')';
 
 	  if($database->query($sql)) {
 	    $this->id = $database->insert_id();

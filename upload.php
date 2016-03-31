@@ -76,7 +76,7 @@ if(isset($_POST['submit'])) {
                  
                  <p>Title:<input type="text" name="title" size="37"> </p> 
           
-                 <p>Description:</p><textarea name="caption" rows="5" cols="40"></textarea></br> 
+                 <p>Description:</p><textarea name="description" rows="5" cols="40"></textarea></br> 
             
                  <input type="submit" name="submit" value="Upload"/>
                 </div>
