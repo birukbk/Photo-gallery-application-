@@ -1,5 +1,6 @@
 <?php
-require_once("config.php");
+require_once("includes/config.php");
+require_once("includes/initialize.php");
 
 class MySQLDatabase {
 
@@ -33,8 +34,13 @@ class MySQLDatabase {
 
     private function confirmQuery($result){
       if (!$result) {
-        die("Database query failed!");
+        die("Database query ffailed!");
       }
+    }
+
+    public function escape_value($string){
+      $escaped_string= mysqli_real_escape_string($this->connection, $string);
+      return $escaped_string;
     }
 
    
@@ -45,10 +51,11 @@ class MySQLDatabase {
   public function num_rows($result_set) {
    return mysql_num_rows($result_set);
   }
-  
+
+  // get the last id inserted over the current db connection
   public function insert_id() {
-    // get the last id inserted over the current db connection
-    return mysqli_insert_id($this->connection);
+
+  return mysqli_insert_id($this->connection);
   }
   
   public function affected_rows() {
@@ -58,5 +65,6 @@ class MySQLDatabase {
 
 }
 $database = new MySQLDatabase($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_name']);
+$db =& $database;
 
 ?>

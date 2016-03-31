@@ -11,13 +11,13 @@ class Photograph{
 	public $title;
 	
 	private $temp_path;
-    protected $upload_dir="images";
+    protected $upload_dir="uploads";
     public $errors=array();
 
     protected $upload_errors = array(
 		// http://www.php.net/manual/en/features.file-upload.errors.php
-		UPLOAD_ERR_OK 				=> "No errors.",
-		UPLOAD_ERR_INI_SIZE  	=> "Larger than upload_max_filesize.",
+	  UPLOAD_ERR_OK 				=> "No errors.",
+	  UPLOAD_ERR_INI_SIZE  	=> "Larger than upload_max_filesize.",
 	  UPLOAD_ERR_FORM_SIZE 	=> "Larger than form MAX_FILE_SIZE.",
 	  UPLOAD_ERR_PARTIAL 		=> "Partial upload.",
 	  UPLOAD_ERR_NO_FILE 		=> "No file.",
@@ -41,13 +41,82 @@ class Photograph{
 		  $this->filename   = basename($file['name']);
 		  $this->type       = $file['type'];
 		  $this->size       = $file['size'];
+		  $this->description=$_POST["description"];
+		  $this->title       = $_POST["title"];
 			return true;
 
 		}
 	}
+		public function save() {
+		if(isset($this->id)) {
+			$this->update();
+		} else {
+			// Make sure there are no errors
+			
+			// Can't save if there are pre-existing errors
+		  if(!empty($this->errors)) { return false; }
+		  
+			// check if the description is too long.
+		  if(strlen($this->description) > 255) {
+				$this->errors[] = "The description can only be 255 characters long.";
+				return false;
+			}
+			if(strlen($this->title) > 255) {
+				$this->errors[] = "The title can only be 255 characters long.";
+				return false;
+			}
+		
+		  // Can't save without filename and temp location
+		  if(empty($this->filename) || empty($this->temp_path)) {
+		    $this->errors[] = "The file location was not available.";
+		    return false;
+		  }
+			
+			// Determine the target_path
+		  $target_path = $this->upload_dir .DS. $this->filename;
+		  
+		  // Make sure a file doesn't already exist in the target location
+		  if(file_exists($target_path)) {
+		    $this->errors[] = "The file {$this->filename} already exists.";
+		    return false;
+		  }
+		
+			// Attempt to move the file 
+			if(move_uploaded_file($this->temp_path, $target_path)) {
+		  	
+				// Save a corresponding entry to the database
+				if($this->create()) {
+					// We are done with temp_path, the file isn't there anymore
+					unset($this->temp_path);
+					return true;
+				}
+			} else {
+				// File was not moved.
+		    $this->errors[] = "The file upload failed, possibly due to incorrect permissions on the upload folder.";
+		    return false;
+			}
+		}
+	}
 
+		public function create() {
+		global $database;
 
+	    $sql = "INSERT INTO photographgallery 
+                  (filename,type,size,description,title)
+        VALUES ('$this->filename', '$this->type', '$this->size', '$this->description', '$this->title')"; 
 
+       //echo $sql;
+
+	  if($database->query($sql)) {
+	    $this->id = $database->insert_id();
+	    return true;
+	  } else {
+	    return false;
+	  }
+	}
+	  	
 }
+
+
 
  ?>

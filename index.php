@@ -9,8 +9,14 @@ if (isset($database)) {
 {
 	echo "false";
 }
+echo "<br />";
+
+
 echo "<br/>";
 echo $database->escape_value("It's  working?");
+
+echo "<br/>";
+echo $sql;
 
 
 //include("includes/footer.html");
