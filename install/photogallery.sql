@@ -7,14 +7,7 @@ description text not null,
 title varchar(255) not null
 );
 
+
+-- example of the query
 INSERT INTO photographgallery (filename,type,size,description,title)
 VALUES ('flower','jpg','12','beautiful flower','blue flower');
-
-INSERT INTO photographgallery (filename,type,size,description,title)
-VALUES ('$[filename]','$[type]','$[size]','$[description]','$[title]');
-
-INSERT INTO photographgallery (filename,type,size,description,title) VALUES ('wow','jpg','10000','ppppp','pink')
-
-$sql = 'INSERT INTO thumbnails (filename, type, size, description, title) 
-								VALUES (\''.$filename.'\', \''.$type.'\',\''.$size.'\',\''.$description.'\',\''.$title.'\')';
-						

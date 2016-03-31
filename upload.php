@@ -17,7 +17,7 @@ echo "title:" .$_POST["title"];
 echo "<br/>";
 echo "Description:" .$_POST["description"];
 echo $sql;
-//$sql = "INSERT INTO photographgallery VALUES ('','';";
+
 echo "<pre>";
 
 

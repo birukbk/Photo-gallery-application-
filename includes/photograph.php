@@ -16,8 +16,8 @@ class Photograph{
 
     protected $upload_errors = array(
 		// http://www.php.net/manual/en/features.file-upload.errors.php
-		UPLOAD_ERR_OK 				=> "No errors.",
-		UPLOAD_ERR_INI_SIZE  	=> "Larger than upload_max_filesize.",
+	  UPLOAD_ERR_OK 				=> "No errors.",
+	  UPLOAD_ERR_INI_SIZE  	=> "Larger than upload_max_filesize.",
 	  UPLOAD_ERR_FORM_SIZE 	=> "Larger than form MAX_FILE_SIZE.",
 	  UPLOAD_ERR_PARTIAL 		=> "Partial upload.",
 	  UPLOAD_ERR_NO_FILE 		=> "No file.",
@@ -49,14 +49,14 @@ class Photograph{
 	}
 		public function save() {
 		if(isset($this->id)) {
-			//$this->update();
+			$this->update();
 		} else {
 			// Make sure there are no errors
 			
 			// Can't save if there are pre-existing errors
 		  if(!empty($this->errors)) { return false; }
 		  
-			// Make sure the description is not too long for the DB
+			// check if the description is too long.
 		  if(strlen($this->description) > 255) {
 				$this->errors[] = "The description can only be 255 characters long.";
 				return false;
@@ -83,7 +83,7 @@ class Photograph{
 		
 			// Attempt to move the file 
 			if(move_uploaded_file($this->temp_path, $target_path)) {
-		  	// Success
+		  	
 				// Save a corresponding entry to the database
 				if($this->create()) {
 					// We are done with temp_path, the file isn't there anymore
@@ -101,17 +101,11 @@ class Photograph{
 		public function create() {
 		global $database;
 
-		 // $attributes = $this->sanitized_attributes();
-	  //    $sql = "INSERT INTO ".self::$table_name." (";
-	  //    $sql .= join(", ", array_keys($attributes));
-	  //    $sql .= ") VALUES ('";
-		 // $sql .= join("', '", array_values($attributes));
-		 // $sql .= "')";
 	    $sql = "INSERT INTO photographgallery 
                   (filename,type,size,description,title)
         VALUES ('$this->filename', '$this->type', '$this->size', '$this->description', '$this->title')"; 
 
-       echo $sql;
+       //echo $sql;
 
 	  if($database->query($sql)) {
 	    $this->id = $database->insert_id();
@@ -120,44 +114,7 @@ class Photograph{
 	    return false;
 	  }
 	}
-		public function image_path() {
-	  return $this->upload_dir.DS.$this->filename;
-	}
-	
-	public function size_as_text() {
-		if($this->size < 1024) {
-			return "{$this->size} bytes";
-		} elseif($this->size < 1048576) {
-			$size_kb = round($this->size/1024);
-			return "{$size_kb} KB";
-		} else {
-			$size_mb = round($this->size/1048576, 1);
-			return "{$size_mb} MB";
-		}
-	}
-
-	  protected function sanitized_attributes() {
-	  global $database;
-	  $clean_attributes = array();
-	  // sanitize the values before submitting
-	  // Note: does not alter the actual value of each attribute
-	  foreach($this->attributes() as $key => $value){
-	    $clean_attributes[$key] = $database->escape_value($value);
-	  }
-	  return $clean_attributes;
-	}
-	protected function attributes() { 
-		// return an array of attribute names and their values
-	  $attributes = array();
-	  foreach(self::$db_fields as $field) {
-	    if(property_exists($this, $field)) {
-	      $attributes[$field] = $this->$field;
-	    }
-	  }
-	  return $attributes;
-	}
-
-	
+	  	
 }
 
 
