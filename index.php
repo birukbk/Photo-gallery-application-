@@ -10,7 +10,7 @@ if (isset($database)) {
 	echo "false";
 }
 echo "<br/>";
-echo $database->escapeValue("It's  working?");
+echo $database->escape_value("It's  working?");
 
 
 //include("includes/footer.html");

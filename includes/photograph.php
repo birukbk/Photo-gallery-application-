@@ -1,6 +1,6 @@
 <?php 
-require_once('includes/intialize.php');
-class Photograph extends database{
+require_once("includes/initialize.php");
+class Photograph{
 	protected static $table_name="photographgallery";
 	protected static $db_fields=array('id', 'filename', 'type', 'size', 'description','title');
 	public $id;
