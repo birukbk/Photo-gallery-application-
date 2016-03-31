@@ -98,47 +98,20 @@ class Photograph{
 		}
 	}
 
-		public function getActiveArtists() {
-       $sql =  "SELECT artist.name, COUNT(song.id) AS SongCount
-                FROM artist 
-                LEFT JOIN song ON (artist.id = song.artist_id) 
-                Where song.id >0
-                GROUP BY artist.name";
-     
-        $result = mysqli_query($this->connection, $sql);
-        return $result;
-  }
-
-	// public function create(){
-	// 	$sql = "INSERT INTO photographgallery (filename,type,size,description,title)
- //                VALUES ('flower','jpg','12','beautiful flower','blue flower')";
-
-	// }
-
 		public function create() {
 		global $database;
-		// Don't forget your SQL syntax and good habits:
-		// - INSERT INTO table (key, key) VALUES ('value', 'value')
-		// - single-quotes around all values
-		// - escape all values to prevent SQL injection
-	 //  $attributes = $this->sanitized_attributes();
-	 //  $sql = "INSERT INTO ".self::$table_name." (";
-	 //  $sql .= join(", ", array_keys($attributes));
-	 //  $sql .= ") VALUES ('";
-		// $sql .= join("', '", array_values($attributes));
-		// $sql .= "')";
-		
 
+		 // $attributes = $this->sanitized_attributes();
+	  //    $sql = "INSERT INTO ".self::$table_name." (";
+	  //    $sql .= join(", ", array_keys($attributes));
+	  //    $sql .= ") VALUES ('";
+		 // $sql .= join("', '", array_values($attributes));
+		 // $sql .= "')";
+	    $sql = "INSERT INTO photographgallery 
+                  (filename,type,size,description,title)
+        VALUES ('$this->filename', '$this->type', '$this->size', '$this->description', '$this->title')"; 
 
-		//  partially working fixed tes query.
-		$sql = $sql = "INSERT INTO ".self::$table_name." (";
-		       $sql .="filename,type,size,description,title)
-                        VALUES ('";
-               $sql .= ",";
-               $sql .= "flower','jpg','12','beautiful flower','blue flower')";
-               
-  // $sql ='INSERT INTO photographgallery '.' (filename,type,size,description,title)';
-  // $sql .='VALUES (\''.$filename.'\', \''.$type.'\',\''.$size.'\',\''.$description.'\',\''.$title.'\')';
+       echo $sql;
 
 	  if($database->query($sql)) {
 	    $this->id = $database->insert_id();
@@ -161,6 +134,27 @@ class Photograph{
 			$size_mb = round($this->size/1048576, 1);
 			return "{$size_mb} MB";
 		}
+	}
+
+	  protected function sanitized_attributes() {
+	  global $database;
+	  $clean_attributes = array();
+	  // sanitize the values before submitting
+	  // Note: does not alter the actual value of each attribute
+	  foreach($this->attributes() as $key => $value){
+	    $clean_attributes[$key] = $database->escape_value($value);
+	  }
+	  return $clean_attributes;
+	}
+	protected function attributes() { 
+		// return an array of attribute names and their values
+	  $attributes = array();
+	  foreach(self::$db_fields as $field) {
+	    if(property_exists($this, $field)) {
+	      $attributes[$field] = $this->$field;
+	    }
+	  }
+	  return $attributes;
 	}
 
 	

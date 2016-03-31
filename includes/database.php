@@ -54,7 +54,9 @@ class MySQLDatabase {
   
   public function insert_id() {
     // get the last id inserted over the current db connection
-    return mysql_insert_id($this->connection);
+    //return mysql_insert_id($this->connection);
+    return mysqli_insert_id($this->connection);
+
   }
   
   public function affected_rows() {
@@ -64,5 +66,6 @@ class MySQLDatabase {
 
 }
 $database = new MySQLDatabase($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_name']);
+$db =& $database;
 
 ?>
