@@ -11,3 +11,7 @@ title varchar(255) not null
 -- example of the query
 INSERT INTO photographgallery (filename,type,size,description,title)
 VALUES ('flower','jpg','12','beautiful flower','blue flower');
+
+
+
+SELECT filename,title FROM photographgallery;

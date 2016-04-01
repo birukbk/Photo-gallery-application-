@@ -2,19 +2,6 @@
 require_once("includes/config.php");
 require_once("includes/initialize.php");
 
-echo "<pre>";
-print_r($_FILES);
-
-echo "title:" .$_POST["title"];
-echo "<br/>";
-echo "Description:" .$_POST["description"];
-echo $sql;
-
-echo "<pre>";
-
-
-
-
  ?>
 
 
@@ -31,10 +18,7 @@ if(isset($_POST['submit'])) {
 	{
 		$message = join("<br />",$photo->errors);
 	}
-
-}
-	
-
+}	
 ?>
 
  <div id="UploadForm">

@@ -31,13 +31,13 @@ class MySQLDatabase {
       }
       return $result;
     }
-
+    //to check the query worked as expected.
     private function confirmQuery($result){
       if (!$result) {
         die("Database query ffailed!");
       }
     }
-
+    //clean the string before performing anything on it
     public function escape_value($string){
       $escaped_string= mysqli_real_escape_string($this->connection, $string);
       return $escaped_string;
@@ -45,11 +45,11 @@ class MySQLDatabase {
 
    
   public function fetch_array($result_set) {
-    return mysql_fetch_array($result_set);
+    return mysqli_fetch_array($result_set);
   }
   
   public function num_rows($result_set) {
-   return mysql_num_rows($result_set);
+   return mysqli_num_rows($result_set);
   }
 
   // get the last id inserted over the current db connection

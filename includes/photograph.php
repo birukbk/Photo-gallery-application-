@@ -12,6 +12,8 @@ class Photograph{
 	
 	private $temp_path;
     protected $upload_dir="uploads";
+    protected $upload_dir2="thumbnails";
+
     public $errors=array();
 
     protected $upload_errors = array(
@@ -80,6 +82,12 @@ class Photograph{
 		    $this->errors[] = "The file {$this->filename} already exists.";
 		    return false;
 		  }
+		  //check if the file is jpeg type
+		  if ($this->type!="image/jpeg") {
+		  	$this->errors[] = "The file {$this->filename} is not an image!";
+				return false;
+		  	
+		  }
 		
 			// Attempt to move the file 
 			if(move_uploaded_file($this->temp_path, $target_path)) {
@@ -118,13 +126,73 @@ class Photograph{
 	public function image_path() {
 	return $this->upload_dir.DS.$this->filename;
 	}
-	public static function find_all() {
-		global $database;
+	public function image_path2() {
+	return $this->upload_dir2.DS.$this->filename;
+	}
 
-		$sql=("SELECT * FROM ".self::$table_name);
-		$result =$database->query($sql);
-		return $result;
+	
+
+
+
+	// public static function find_all() {
+	// 	global $database;
+
+	// 	$sql=("SELECT * FROM ".self::$table_name);
+	// 	$result =$database->query($sql);
+	// 	return $result;
+ //  }
+  // -------------------------------------------------------------------------------
+	public static function find_all() {
+    global $database;
+    $sql="SELECT * FROM ".self::$table_name;
+    $result_set = $database->query($sql);
+    $object_array = array();
+    while ($row = $database->fetch_array($result_set)) {
+      $object_array[] = self::instantiate($row);
+    }
+    return $object_array;
   }
+  	private static function instantiate($record) {
+		// Could check that $record exists and is an array
+    $object = new self;
+		foreach($record as $attribute=>$value){
+		  if($object->has_attribute($attribute)) {
+		    $object->$attribute = $value;
+		  }
+		}
+		return $object;
+	}
+
+
+
+
+	private function has_attribute($attribute) {
+	  //check if the value exists
+	  return array_key_exists($attribute, $this->attributes());
+	}
+
+	protected function attributes() { 
+		// return an array of attribute names and their values
+	  $attributes = array();
+	  foreach(self::$db_fields as $field) {
+	    if(property_exists($this, $field)) {
+	      $attributes[$field] = $this->$field;
+	    }
+	  }
+	  return $attributes;
+	}
+	
+	protected function sanitized_attributes() {
+	  global $database;
+	  $clean_attributes = array();
+	  // sanitize the values before submitting
+	  // Note: does not alter the actual value of each attribute
+	  foreach($this->attributes() as $key => $value){
+	    $clean_attributes[$key] = $database->escape_value($value);
+	  }
+	  return $clean_attributes;
+	}
+	
 	  	
 }
 
