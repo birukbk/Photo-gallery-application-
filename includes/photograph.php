@@ -1,5 +1,5 @@
 <?php 
-require_once("includes/initialize.php");
+require_once("includes/config.php");
 class Photograph{
 	protected static $table_name="photographgallery";
 	protected static $db_fields=array('id', 'filename', 'type', 'size', 'description','title');
