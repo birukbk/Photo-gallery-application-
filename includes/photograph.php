@@ -114,6 +114,17 @@ class Photograph{
 	    return false;
 	  }
 	}
+
+	public function image_path() {
+	return $this->upload_dir.DS.$this->filename;
+	}
+	public static function find_all() {
+		global $database;
+
+		$sql=("SELECT * FROM ".self::$table_name);
+		$result =$database->query($sql);
+		return $result;
+  }
 	  	
 }
 
