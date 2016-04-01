@@ -1,4 +1,6 @@
 <?php 
+require_once("includes/config.php");
+require_once("includes/initialize.php");
 function redirectTo($location = NULL){
 	if ($location != Null) {
 
@@ -42,6 +44,20 @@ function __autoload($class_name) {
 		die("The file {$class_name}.php could not be found.");
 	}
 }
+
+/**
+ * Resize images
+ *
+ * Function to resize images to fit area specified when called
+ * 
+ * @param string $in_img_file Input image file
+ * @param string $out_img_file Output image filename
+ * @param int $req_width Width of area the image should fill
+ * @param int $req_height Height of area the image should fill
+ * @param int $quality Quality of the thumb
+ * @return bool, string $error[, int $new_width, int $new_height] 
+ */
+
 
 
 

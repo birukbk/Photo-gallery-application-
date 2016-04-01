@@ -91,9 +91,15 @@ class Photograph{
 		
 			// Attempt to move the file 
 			if(move_uploaded_file($this->temp_path, $target_path)) {
+					//$img2 = img_resize('racoon.jpg', $config['thumbs_dir'].'racoon_small.jpg', 200, 200);
+					//img_resize($in_img_file, $out_img_file, $req_width, $req_height, $quality)
+					//echo $this->filename;
+					//echo $upload_dir2;
+					// $this->img_resize($this->filename,$upload_dir2,$this->filename,150,150,90);
 		  	
 				// Save a corresponding entry to the database
 				if($this->create()) {
+				
 					// We are done with temp_path, the file isn't there anymore
 					unset($this->temp_path);
 					return true;
@@ -192,6 +198,8 @@ class Photograph{
 	  }
 	  return $clean_attributes;
 	}
+
+
 	
 	  	
 }
