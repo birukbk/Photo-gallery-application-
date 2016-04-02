@@ -96,11 +96,14 @@ class Photograph{
 		  	
 				// Save a corresponding entry to the database
 				if($this->create()) {
-					// $dir=opendir('uploads/');
-					$dir=opendir($upload_dir.DS);
-					$name=readdir($dir);
-					$thumb=$this->img_resize($upload_dir.DS.$name,$upload_dir2.DS.$name,150,150,90);
-					closedir($dir);
+					$dir=opendir('uploads/');
+					while (false!=($name=readdir($dir))) {
+					if ($name!='.'&& $name!='..') {
+					$thumb=$this->img_resize('uploads/'.$name,'thumbnails/'.$name,150,150,90);
+					//echo '<img src="thumbnails/'.$name.'"width="'.$thumb[2].'"height="'.$thumb[3].'"/>';
+						
+						}
+				}
 					// We are done with temp_path, the file isn't there anymore
 					unset($this->temp_path);
 					// print_r($thumb);
@@ -219,7 +222,7 @@ class Photograph{
 
 	//resize image.
 	//reperpused function from hands on example
-	 public function img_resize($in_img_file, $out_img_file, $req_width, $req_height, $quality) {
+	public function img_resize($in_img_file, $out_img_file, $req_width, $req_height, $quality) {
 
     // Get image file details
     list($width, $height, $type, $attr) = getimagesize($in_img_file);
@@ -230,6 +233,13 @@ class Photograph{
             case IMAGETYPE_JPEG:
                 $src = @imagecreatefromjpeg($in_img_file);
                 break;
+            case IMAGETYPE_PNG:
+                $src = @imagecreatefrompng($in_img_file);
+                break;
+            case IMAGETYPE_GIF:
+                $src = @imagecreatefromgif($in_img_file);
+                break;
+            default:
                 $error = "Image is not a gif, png or jpeg.";
                 return array(false, $error);
         }
@@ -241,13 +251,13 @@ class Photograph{
             $new_height = $height;
         } else {
             // Test orientation of image and set new dimensions appropriately
-           // (makes sure largest dimension never exceeds the target thumb size)
+      // (makes sure largest dimension never exceeds the target thumb size)
             if ($width > $height) {
                 // landscape
                 $sf = $req_width / $width;
             } else {
                 // portrait                 
-            $sf = $req_height / $height;
+    $sf = $req_height / $height;
             }
             $new_width = round($width * $sf);
             $new_height = round($height * $sf);
@@ -266,10 +276,15 @@ class Photograph{
         imagedestroy($new);
 
         // Return an array of values, including the new width and height
-        return (true);
-    } 
-}	  	
+        return array(true, "Resize successful", $new_width, $new_height);
+    } else {
+  // Return only the bool and an error message
+        $error = "Problem opening image.";
+        return array(false, $error);
+    }
 }
+}	  	
+
 
 
 
