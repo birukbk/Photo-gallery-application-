@@ -29,17 +29,7 @@ $output .='';
 	 	echo $output;
 
 
-	 		$output2="HELOO";
-            $output2.='<p>';
-	    	$output2.='<br/>';
-	    	$output2.='<a href="index.php">';
-	    	$output2.='<img src="'.$photo->image_path().'">';
-	    	$output2.='</a>';
-	    	// $output2.='<a href="'.$photo->image_path().'">';
-	    	
-
-	    	echo $output2;
-
+	 		
 
 
 ?>

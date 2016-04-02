@@ -13,8 +13,8 @@ class Photograph{
 	public $title;
 	
 	private $temp_path;
-    protected $upload_dir="uploads";
-    protected $upload_dir2="thumbnails";
+    protected $upload_dir="../uploads";
+    protected $upload_dir2="../thumbnails";
 
     public $errors=array();
 
@@ -97,10 +97,10 @@ class Photograph{
 		  	
 				// Save a corresponding entry to the database
 				if($this->create()) {
-					$dir=opendir('uploads/');
+					$dir=opendir('../uploads/');
 					while (false!=($name=readdir($dir))) {
 					if ($name!='.'&& $name!='..') {
-					$thumb=$this->img_resize('uploads/'.$name,'thumbnails/'.$name,150,150,90);
+					$thumb=$this->img_resize('../uploads/'.$name,'../thumbnails/'.$name,150,150,90);
 					//echo '<img src="thumbnails/'.$name.'"width="'.$thumb[2].'"height="'.$thumb[3].'"/>';
 						
 						}
