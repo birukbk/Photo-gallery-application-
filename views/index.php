@@ -1,19 +1,13 @@
 <?php 
-require_once("includes/config.php");
-require_once("includes/database.php");
-require_once("../includes/initialize.php");
-include("includes/head.html");
+include(dirname(dirname(__FILE__))."/includes/head.html");
+include(dirname(dirname(__FILE__))."/includes/initialize.php");
+
 $photos=photograph::find_all();
-// $var="flowers.jpg";
-//  $content="";
-//  $content.='<img src="uploads/'.$var.'">';
-//  echo $content;
-//  
-// foreach ($photos as $photo) :
-// echo $photo->image_path();
 // echo "<br/>";
-// endforeach;
- ?>
+// echo  dirname(__FILE__);
+// echo "<br/>";
+// echo dirname(dirname(__FILE__));
+?>
 
  
 <?php  
