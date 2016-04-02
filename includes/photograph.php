@@ -1,5 +1,6 @@
 <?php 
 require_once("includes/config.php");
+require_once("includes/initialize.php");
 class Photograph{
 	protected static $table_name="photographgallery";
 	protected static $db_fields=array('id', 'filename', 'type', 'size', 'description','title');
@@ -91,17 +92,18 @@ class Photograph{
 		
 			// Attempt to move the file 
 			if(move_uploaded_file($this->temp_path, $target_path)) {
-					//$img2 = img_resize('racoon.jpg', $config['thumbs_dir'].'racoon_small.jpg', 200, 200);
-					//img_resize($in_img_file, $out_img_file, $req_width, $req_height, $quality)
-					//echo $this->filename;
-					//echo $upload_dir2;
-					// $this->img_resize($this->filename,$upload_dir2,$this->filename,150,150,90);
+					
 		  	
 				// Save a corresponding entry to the database
 				if($this->create()) {
-				
+					// $dir=opendir('uploads/');
+					$dir=opendir($upload_dir.DS);
+					$name=readdir($dir);
+					$thumb=$this->img_resize($upload_dir.DS.$name,$upload_dir2.DS.$name,150,150,90);
+					closedir($dir);
 					// We are done with temp_path, the file isn't there anymore
 					unset($this->temp_path);
+					// print_r($thumb);
 					return true;
 				}
 			} else {
@@ -113,13 +115,21 @@ class Photograph{
 	}
 
 		public function create() {
-		global $database;
 
+		global $database;
+		$sanitized_filename=$this->sanitize($this->filename);
+		$sanitized_type=$this->sanitize($this->type);
+		$sanitized_size=$this->sanitize($this->size);
+		$sanitized_description=$this->sanitize($this->description);
+		$sanitized_title=$this->sanitize($this->title);
 	    $sql = "INSERT INTO photographgallery 
                   (filename,type,size,description,title)
-        VALUES ('$this->filename', '$this->type', '$this->size', '$this->description', '$this->title')"; 
+        VALUES ('$sanitized_filename', '$sanitized_type', '$sanitized_size', '$sanitized_description', '$sanitized_title')"; 
 
        //echo $sql;
+       //echo escape_value($this->title);
+       //$cleanedTitle=sanitize($this->title);
+
 
 	  if($database->query($sql)) {
 	    $this->id = $database->insert_id();
@@ -134,6 +144,18 @@ class Photograph{
 	}
 	public function image_path2() {
 	return $this->upload_dir2.DS.$this->filename;
+	}
+	 	public function escape_value( $value ) {
+		if( $this->real_escape_string_exists ) { // PHP v4.3.0 or higher
+			// undo any magic quote effects so mysql_real_escape_string can do the work
+			if( $this->magic_quotes_active ) { $value = stripslashes( $value ); }
+			$value = mysql_real_escape_string( $value );
+		} else { // before PHP v4.3.0
+			// if magic quotes aren't already on then add slashes manually
+			if( !$this->magic_quotes_active ) { $value = addslashes( $value ); }
+			// if magic quotes are active, then the slashes already exist
+		}
+		return $value;
 	}
 
 	
@@ -172,6 +194,7 @@ class Photograph{
 
 
 
+	
 	private function has_attribute($attribute) {
 	  //check if the value exists
 	  return array_key_exists($attribute, $this->attributes());
@@ -188,20 +211,64 @@ class Photograph{
 	  return $attributes;
 	}
 	
-	protected function sanitized_attributes() {
+	public function sanitize($value) {
 	  global $database;
-	  $clean_attributes = array();
-	  // sanitize the values before submitting
-	  // Note: does not alter the actual value of each attribute
-	  foreach($this->attributes() as $key => $value){
-	    $clean_attributes[$key] = $database->escape_value($value);
-	  }
-	  return $clean_attributes;
+      $clean_value=$this->escape_value($value);
+	  return $clean_value;
 	}
 
+	//resize image.
+	//reperpused function from hands on example
+	 public function img_resize($in_img_file, $out_img_file, $req_width, $req_height, $quality) {
 
-	
-	  	
+    // Get image file details
+    list($width, $height, $type, $attr) = getimagesize($in_img_file);
+
+    // Open file according to file type
+    if (isset($type)) {
+        switch ($type) {
+            case IMAGETYPE_JPEG:
+                $src = @imagecreatefromjpeg($in_img_file);
+                break;
+                $error = "Image is not a gif, png or jpeg.";
+                return array(false, $error);
+        }
+        
+        // Check if image is smaller (in both directions) than required image
+        if ($width < $req_width and $height < $req_height) {
+            // Use original image dimensions
+            $new_width = $width;
+            $new_height = $height;
+        } else {
+            // Test orientation of image and set new dimensions appropriately
+           // (makes sure largest dimension never exceeds the target thumb size)
+            if ($width > $height) {
+                // landscape
+                $sf = $req_width / $width;
+            } else {
+                // portrait                 
+            $sf = $req_height / $height;
+            }
+            $new_width = round($width * $sf);
+            $new_height = round($height * $sf);
+        }
+
+        // Create the new canvas ready for resampled image to be inserted into it
+        $new = imagecreatetruecolor($new_width, $new_height);
+
+        // Resample input image into newly created image
+        imagecopyresampled($new, $src, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+
+        // Create output jpeg
+        imagejpeg($new, $out_img_file, $quality);
+        // Destroy any intermediate image files
+        imagedestroy($src);
+        imagedestroy($new);
+
+        // Return an array of values, including the new width and height
+        return (true);
+    } 
+}	  	
 }
 
 

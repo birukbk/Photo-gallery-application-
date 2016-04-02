@@ -36,14 +36,7 @@ class MySQLDatabase {
       if (!$result) {
         die("Database query ffailed!");
       }
-    }
-    //clean the string before performing anything on it
-    public function escape_value($string){
-      $escaped_string= mysqli_real_escape_string($this->connection, $string);
-      return $escaped_string;
-    }
-
-   
+    }  
   public function fetch_array($result_set) {
     return mysqli_fetch_array($result_set);
   }

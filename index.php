@@ -13,7 +13,7 @@ $photos=photograph::find_all();
 // endforeach;
  ?>
 
- <?php 
+<!--  <?php 
      function img_resize($in_img_file, $out_img_file, $req_width, $req_height, $quality) {
 
     // Get image file details
@@ -79,18 +79,20 @@ $dir=opendir('uploads/');
 while (false!=($name=readdir($dir))) {
 	if ($name!='.'&& $name!='..') {
 		$thumb=img_resize('uploads/'.$name,'thumbnails/'.$name,150,150,90);
-		echo '<img src="thumbnails/'.$name.'"width="'.$thumb[2].'"height="'.$thumb[3].'"/>';
+		//echo '<img src="thumbnails/'.$name.'"width="'.$thumb[2].'"height="'.$thumb[3].'"/>';
 	}
 }
 
 
 closedir($dir);
+echo '<img src="thumbnails/'.$name.'"/>';
 
-  ?>
+  ?> -->
  
+<?php  
 
-<!-- <?php 
-	$output .='';
+
+$output .='';
 		//get the values from database
 		foreach ($photos as $photo) :
 			
@@ -106,6 +108,10 @@ closedir($dir);
 	 	echo $output;
 
 
- ?> -->
+?>
+	
+
+
+
 
 
