@@ -45,13 +45,9 @@ class MySQLDatabase {
 
   // get the last id inserted over the current db connection
   public function insert_id() {
-
   return mysqli_insert_id($this->connection);
   }
   
-  public function affected_rows() {
-    return mysql_affected_rows($this->connection);
-  }
   public function prepare($sql){
     return mysqli_prepare($this->connection,$sql);
 
