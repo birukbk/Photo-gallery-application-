@@ -1,6 +1,5 @@
 <?php 
 include(dirname(dirname(__FILE__))."/includes/initialize.php");
-//require_once("includes/config.php");
 
 class Photograph{
 	protected static $table_name="photographgallery";

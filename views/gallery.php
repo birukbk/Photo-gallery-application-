@@ -3,7 +3,7 @@
 include(dirname(dirname(__FILE__))."/includes/initialize.php");
 
 $photos=photograph::find_all();
-
+        
         $output ='';
 		foreach ($photos as $photo) :
 	    	$output.='<p>';
@@ -16,7 +16,7 @@ $photos=photograph::find_all();
 	    endforeach;
 
 
-	    
+
 $content="";
 $tpl_head=file_get_contents('../includes/head.html');
 $tpl = file_get_contents('../templates/template.html');

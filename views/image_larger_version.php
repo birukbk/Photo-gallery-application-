@@ -10,6 +10,8 @@ include(dirname(dirname(__FILE__))."/includes/initialize.php");
  $photo=photograph::find_by_id($_GET['id']);
             $output ='';
 	    	$output.='<p>';
+	    	$output.='Title:';
+	    	$output.=$photo->title;
 	    	$output.='<br/>';
 	    	$output.='<a href="gallery.php">';
 	    	$output.='<img src="'.htmlentities($photo->image_path()).'">';
