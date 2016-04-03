@@ -120,27 +120,13 @@ class Photograph{
 
 		public function create() {
 
-		global $database;
-		// $sanitized_filename=$this->sanitize($this->filename);
-		// $sanitized_type=$this->sanitize($this->type);
-		// $sanitized_size=$this->sanitize($this->size);
-		// $sanitized_description=$this->sanitize($this->description);
-		// $sanitized_title=$this->sanitize($this->title);
-	 //    $sql = "INSERT INTO photographgallery 
-  //                 (filename,type,size,description,title)
-  //       VALUES ('$sanitized_filename', '$sanitized_type', '$sanitized_size', '$sanitized_description', '$sanitized_title')"; 
-
-       //echo $sql;
-       //echo escape_value($this->title);
-       //$cleanedTitle=sanitize($this->title);
-       //
-       //__________________________________________________________________________
-       //
+		  global $database;
 	       $filename=$this->filename;
 	       $type=$this->type;
 	       $size=$this->size;
 	       $description=$this->description;
 	       $title=$this->title;
+	       //preparing the sql statment.
        $sql = "INSERT INTO photographgallery 
             (filename, type, size, description, title)
           VALUES
@@ -190,10 +176,6 @@ class Photograph{
 		}
 		return $object;
 	}
-
-
-
-
 	
 	private function has_attribute($attribute) {
 	  //check if the value exists
@@ -211,12 +193,6 @@ class Photograph{
 	  return $attributes;
 	}
 	
-	public function sanitize($value) {
-	  global $database;
-      $clean_value=$this->escape_value($value);
-	  return $clean_value;
-	}
-
 	//resize image.
 	//reperpused function from hands on example
 	public function img_resize($in_img_file, $out_img_file, $req_width, $req_height, $quality) {
@@ -281,8 +257,4 @@ class Photograph{
     }
 }
 }	  	
-
-
-
-
  ?>
