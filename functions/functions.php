@@ -27,23 +27,6 @@ echo  $message;
  }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function outputMessage($message=""){
 	if (!empty($message)) {
 		return "<p class=\"message\">{$message}</p>";
