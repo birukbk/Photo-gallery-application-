@@ -8,6 +8,42 @@ function redirectTo($location = NULL){
 	}
 }
 
+function processUpload($file, $dir) {
+    $message="";
+if(isset($_POST['submit'])) {
+    $photo = new Photograph();
+    $photo->attach_file($_FILES['file_upload']);
+
+    if ($photo->save()) {
+        $message = "File uploaded successfully.";
+    }else
+    {
+        $message = join("<br />",$photo->errors);
+    }
+} 
+echo  $message;
+
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function outputMessage($message=""){
 	if (!empty($message)) {
 		return "<p class=\"message\">{$message}</p>";
