@@ -2,28 +2,29 @@
 // include(dirname(dirname(__FILE__))."/includes/head.html");
 include(dirname(dirname(__FILE__))."/includes/initialize.php");
 
-$photos=photograph::find_all();
-
-        $output ='';
-		foreach ($photos as $photo) :
+        if (empty($_GET['id'])) {
+          redirectTo('gallery.php');
+        }
+       
+      
+ $photo=photograph::find_by_id($_GET['id']);
+            $output ='';
 	    	$output.='<p>';
 	    	$output.='<br/>';
-	    	$output.='<a href="'."image_larger_version.php?id=".$photo->id.'">';
-	    	$output.='<img src="'.htmlentities($photo->image_path2()).'">';
+	    	$output.='<a href="gallery.php">';
+	    	$output.='<img src="'.htmlentities($photo->image_path()).'">';
 	    	$output.='<br/>';
-	    	$output.=$photo->title;
+	    	$output.='Description:';
+	    	$output.=$photo->description;
+	    	$output.='<br/>';
 	    	$output.='</p>';
-	    endforeach;
-
-
-	    
 $content="";
 $tpl_head=file_get_contents('../includes/head.html');
 $tpl = file_get_contents('../templates/template.html');
 $page_footer=file_get_contents('../includes/footer.html');
 
-$title = 'Photo gallery';
-$heading = 'Welcome to the Cool Photo gallery application';
+
+$heading = "THE BIG PICTURE";
 $gallery_content= $output;
 
 //parse a template and populate it with values
@@ -32,6 +33,8 @@ $gallery_PageContent=parseTemplate($tpl, array(
                                     '{{ page_title }}' => $title ,
                                     '{{ page_heading }}' => $heading,
                                     '{{ content }}' => $gallery_content));
+									
+									
 
 $content.=$page_header;
 $content.=$gallery_PageContent;
@@ -40,8 +43,6 @@ $content.=$page_footer;
 echo $content;
 ?>
 	
-
-
 
 
 
