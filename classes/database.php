@@ -52,6 +52,13 @@ class MySQLDatabase {
   public function affected_rows() {
     return mysql_affected_rows($this->connection);
   }
+  public function prepare($sql){
+    return mysqli_prepare($this->connection,$sql);
+
+  }
+  public function bind_param($sql){
+    return mysqli_stmt_bind_param($this->connection,$sql);
+  }
 
 
 }

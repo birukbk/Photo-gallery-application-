@@ -121,58 +121,54 @@ class Photograph{
 		public function create() {
 
 		global $database;
-		$sanitized_filename=$this->sanitize($this->filename);
-		$sanitized_type=$this->sanitize($this->type);
-		$sanitized_size=$this->sanitize($this->size);
-		$sanitized_description=$this->sanitize($this->description);
-		$sanitized_title=$this->sanitize($this->title);
-	    $sql = "INSERT INTO photographgallery 
-                  (filename,type,size,description,title)
-        VALUES ('$sanitized_filename', '$sanitized_type', '$sanitized_size', '$sanitized_description', '$sanitized_title')"; 
+		// $sanitized_filename=$this->sanitize($this->filename);
+		// $sanitized_type=$this->sanitize($this->type);
+		// $sanitized_size=$this->sanitize($this->size);
+		// $sanitized_description=$this->sanitize($this->description);
+		// $sanitized_title=$this->sanitize($this->title);
+	 //    $sql = "INSERT INTO photographgallery 
+  //                 (filename,type,size,description,title)
+  //       VALUES ('$sanitized_filename', '$sanitized_type', '$sanitized_size', '$sanitized_description', '$sanitized_title')"; 
 
        //echo $sql;
        //echo escape_value($this->title);
        //$cleanedTitle=sanitize($this->title);
-
-
-	  if($database->query($sql)) {
-	    $this->id = $database->insert_id();
-	    return true;
+       //
+       //__________________________________________________________________________
+       //
+	       $filename=$this->filename;
+	       $type=$this->type;
+	       $size=$this->size;
+	       $description=$this->description;
+	       $title=$this->title;
+       $sql = "INSERT INTO photographgallery 
+            (filename, type, size, description, title)
+          VALUES
+            (?, ?, ?, ?, ?)";
+			$stmt = $database->prepare($sql);
+			// The string 'ssiss' in the following means 'string, string, int, string, string'
+			//  and describes the types of the parameters.
+			$stmt->bind_param('ssiss',$filename,$type,$size,$description,$title);
+			 
+			$stmt->execute();
+			//$this->id = $database->insert_id();
+			//echo $sql;
+			$stmt->close();
+            echo $database->insert_id();
+			//echo $sql;
+	       if($database->insert_id()!=0) {
+	          return true;
 	  } else {
 	    return false;
 	  }
 	}
-
 	public function image_path() {
 	return $this->upload_dir.DS.$this->filename;
 	}
 	public function image_path2() {
 	return $this->upload_dir2.DS.$this->filename;
 	}
-	 	public function escape_value( $value ) {
-		if( $this->real_escape_string_exists ) { // PHP v4.3.0 or higher
-			// undo any magic quote effects so mysql_real_escape_string can do the work
-			if( $this->magic_quotes_active ) { $value = stripslashes( $value ); }
-			$value = mysql_real_escape_string( $value );
-		} else { // before PHP v4.3.0
-			// if magic quotes aren't already on then add slashes manually
-			if( !$this->magic_quotes_active ) { $value = addslashes( $value ); }
-			// if magic quotes are active, then the slashes already exist
-		}
-		return $value;
-	}
 
-	
-
-
-
-	// public static function find_all() {
-	// 	global $database;
-
-	// 	$sql=("SELECT * FROM ".self::$table_name);
-	// 	$result =$database->query($sql);
-	// 	return $result;
- //  }
   // -------------------------------------------------------------------------------
 	public static function find_all() {
     global $database;
