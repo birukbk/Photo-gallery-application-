@@ -20,7 +20,6 @@ class MySQLDatabase {
             mysqli_close($this->connection);
         }
     }
-
     public function query($sql){
       $result = mysqli_query($this->connection,$sql);
       if (!$result) {
