@@ -17,37 +17,25 @@ $photos=photograph::find_all();
 
 
 // ___________________________________________________________________________________        
-  //       $output ='';
-		// foreach ($photos as $photo) :
-	 //    	$output.='<p>';
-	 //    	$output.='<br/>';
-	 //    	$output.='<a href="'."image_larger_version.php?id=".$photo->id.'">';
-	 //    	$output.='<img src="'.htmlentities($photo->image_path2()).'">';
-	 //    	$output.='<br/>';
-	 //    	$output.=$photo->title;
-	 //    	$output.='</p>';
-	 //    endforeach;
-	 //    
-	  $output ='';
+    
+	       $output ='';
+	       $output.='<div id="content">';
+		   $output.='<div class="content_wrap">';
 
 		foreach ($photos as $photo) :
-			$output.='<div class="thumbframe">';
-
+			$output.='<div class="thumbnail_wrap">';
+			$output.='<div class="thumbnail_frame">';
 	    	$output.='<p>';
-	    	// $output.='<br/>';
 	    	$output.=$photo->title;
-	    	$output.='<div class="thumbWrap">';
-	    	// $output.='<br/>';
-	    	// $output.='<br/>';
+	    	$output.='<p>';
 	    	$output.='<a href="'."image_larger_version.php?id=".$photo->id.'">';
 	    	$output.='<img src="'.htmlentities($photo->image_path2()).'">';
-	    	// $output.='<br/>';
-	    	// $output.='<a/>';
 	    	$output.='</div>';
-	    	//$output.='</p>';
-	    	$output.='</div>';
+	    	$output.='</div>';  	
 	    endforeach;
-	    
+	        $output.='</div>';
+	        $output.='</div>';
+
 
 
 

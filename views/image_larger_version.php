@@ -8,25 +8,15 @@ include(dirname(dirname(__FILE__))."/includes/initialize.php");
        
       
  $photo=photograph::find_by_id($_GET['id']);
-      //       $output ='';
-	    	// $output.='<p>';
-	    	// $output.='Title:';
-	    	// $output.=$photo->title;
-	    	// $output.='<br/>';
-	    	// $output.='<a href="gallery.php">';
-	    	// $output.='<img src="'.htmlentities($photo->image_path()).'">';
-	    	// $output.='<br/>';
-	    	// $output.='Description:';
-	    	// $output.=$photo->description;
-	    	// $output.='<br/>';
-	    	// $output.='</p>';
-	    	      $output ='';
-            $output.='<div class="frameWrap">';
+            $output ='';
+            $output.='<div id="content">';
+		    $output.='<div class="content_wrap">';
 	    	$output.='<p>';
+	    	// $output.='<div class="thumbnail_wrap">';
+			// $output.='<div class="thumbnail_frame">';
 	    	$output.='Title:';
 	    	$output.=$photo->title;
-	    	// $output.='<div id="frame">';
-	    	$output.='<br/>';
+	    	$output.='<p>';
 	    	$output.='<a href="gallery.php">';
 	    	$output.='<img src="'.htmlentities($photo->image_path()).'">';
 	    	$output.='<br/>';
@@ -35,8 +25,7 @@ include(dirname(dirname(__FILE__))."/includes/initialize.php");
 	    	$output.='<br/>';
 	    	$output.='</p>';
 	    	$output.='</div>';
-	    	$output.='</p>';
-	    	$output.='</div>';
+	        $output.='</div>';
 
 
 $content="";
@@ -45,7 +34,7 @@ $tpl = file_get_contents('../templates/template.html');
 $page_footer=file_get_contents('../includes/footer.html');
 
 
-$heading = "THE BIG PICTURE";
+// $heading = "THE BIG PICTURE";
 $gallery_content= $output;
 
 //parse a template and populate it with values

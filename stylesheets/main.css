@@ -5,6 +5,7 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    float: center
 }
 
 li {
@@ -25,6 +26,14 @@ li a:hover {
 .active {
     background-color: #4CAF50;
 }
+#nav_bar{
+    height: 100px;
+    text-align: center;
+}
+#Heading{
+    text-align: center;
+}
+
 
 /*css for the tables*/
 
@@ -35,59 +44,32 @@ li a:hover {
  vertical-align: middle; 
  text-align: center; 
 }
-.frameWrap{ 
+.frame_wrap{ 
 width: 672px; margin: 25px auto; 
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover {
-    color: #1da73b;
-}
 .active {
     background-color: #4CAF50;
 }
 
 /*css for the tables*/
-
-.thumbframe             
-{ 
-/*width: 160px; background: url('../images/border-small.png') 0 0;*/
- height: 174px; display: table-cell; 
- vertical-align: left; 
- text-align: center; }
-.thumbWrap              
-{ width: 174px; 
-    float: left; 
-    margin: 15px 5px; 
+#content { 
+border-bottom: 1px solid #111; 
+padding-bottom: 50px; 
 }
-.thumbWrap p 
-{ 
-    margin-bottom: 5px; 
-}
-.UploadForm{
-    
+.content_wrap {
+ width: 736px; 
+ margin: 0 auto;
+  overflow: hidden;
+   }
+#frame                  { width: 672px; background: url('../images/border_large_image.png') 0 0; height: 672px; display: table-cell; vertical-align: middle; text-align: center; }
+.frame_wrap              { width: 672px; margin: 25px auto; }
+.frame_wrap p            { text-align: center; }
 
-}
-
+/* Thumbs */
+.thumbnail_frame             { width: 180px; background: url('../images/border_thumbnail.png') 0 0; height: 174px; display: table-cell; vertical-align: middle; text-align: center; }
+.thumbnail_wrap              { width: 180px; float: left; margin: 15px 30px; }
+.thumbnail_wrap p            { margin-bottom: 5px; }
 
 
 
