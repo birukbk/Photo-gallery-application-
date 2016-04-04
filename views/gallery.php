@@ -13,8 +13,12 @@ $photos=photograph::find_all();
 // echo "</pre>";
 // echo $JSON;
 // 
+$upsoloutDIR=dirname(dirname(__FILE__));
 
-
+echo dirname(dirname(__FILE__));
+echo "<br/>";
+//echo $upsoloutDIR;
+//echo absolute;
 
 // ___________________________________________________________________________________        
     
@@ -28,7 +32,7 @@ $photos=photograph::find_all();
 	    	$output.='<p>';
 	    	$output.=$photo->title;
 	    	$output.='<p>';
-	    	$output.='<a href="'."image_larger_version.php?id=".$photo->id.'">';
+	    	$output.='<a href="'."views/image_larger_version.php?id=".$photo->id.'">';
 	    	$output.='<img src="'.htmlentities($photo->thumb_image_path()).'">';
 	    	$output.='</div>';
 	    	$output.='</div>';  	
@@ -36,7 +40,7 @@ $photos=photograph::find_all();
 	        $output.='</div>';
 	        $output.='</div>';
 
-	        echo $photo->thumb_image_path();
+
 
 
 

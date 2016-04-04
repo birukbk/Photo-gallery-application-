@@ -17,7 +17,7 @@ include(dirname(dirname(__FILE__))."/includes/initialize.php");
 	    	$output.='Title:';
 	    	$output.=$photo->title;
 	    	$output.='<p>';
-	    	$output.='<a href="gallery.php">';
+	    	$output.='<a href="../index.php">';
 	    	$output.='<img src="'.htmlentities($photo->thumb_image_path_600x600()).'">';
 	    	$output.='<br/>';
 	    	$output.='Description:';
@@ -50,7 +50,7 @@ $content.=$page_header;
 $content.=$gallery_PageContent;
 $content.=$page_footer;
 
-// echo $content;
+echo $content;
 ?>
 	
 

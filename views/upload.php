@@ -12,7 +12,7 @@ include(dirname(dirname(__FILE__))."/includes/initialize.php");
 
  <div id="UploadForm">
              <?php if(!empty($message)){echo "<p>{$message}</p>";} ?>
-             <form  action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data"  method="POST">
+             <form  action="<?php echo htmlentities($_SERVER['REQUEST_URI']); ?>" enctype="multipart/form-data"  method="POST">
                 <div>
                  <label for="fileinput">choose image:</label>
                  <input name="file_upload" type="file" id="fileinput" />
