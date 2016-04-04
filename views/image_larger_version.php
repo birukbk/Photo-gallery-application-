@@ -18,7 +18,7 @@ include(dirname(dirname(__FILE__))."/includes/initialize.php");
 	    	$output.=$photo->title;
 	    	$output.='<p>';
 	    	$output.='<a href="gallery.php">';
-	    	$output.='<img src="'.htmlentities($photo->image_path()).'">';
+	    	$output.='<img src="'.htmlentities($photo->thumb_image_path_600x600()).'">';
 	    	$output.='<br/>';
 	    	$output.='Description:';
 	    	$output.=$photo->description;

@@ -13,7 +13,8 @@ class Photograph{
 	
 	private $temp_path;
     protected $upload_dir="../uploads";
-    protected $upload_dir2="../thumbnails";
+    protected $upload_dir_thumbnail="../thumbnails";
+    protected $upload_dir_thumbnail_600x600="../thumbnails/600x600";
 
     public $errors=array();
 
@@ -100,7 +101,9 @@ class Photograph{
 					while (false!=($name=readdir($dir))) {
 					if ($name!='.'&& $name!='..') {
 					$thumb=$this->img_resize('../uploads/'.$name,'../thumbnails/'.$name,150,150,90);
+					$thumb=$this->img_resize('../uploads/'.$name,'../thumbnails/600x600/'.$name,606,600,90);
 					//echo '<img src="thumbnails/'.$name.'"width="'.$thumb[2].'"height="'.$thumb[3].'"/>';
+					//600x600
 						
 						}
 				}
@@ -150,8 +153,11 @@ class Photograph{
 	public function image_path() {
 	return $this->upload_dir.DS.$this->filename;
 	}
-	public function image_path2() {
-	return $this->upload_dir2.DS.$this->filename;
+	public function thumb_image_path() {
+	return $this->upload_dir_thumbnail.DS.$this->filename;
+	}
+	public function thumb_image_path_600x600() {
+	return $this->upload_dir_thumbnail_600x600.DS.$this->filename;
 	}
 
   // -------------------------------------------------------------------------------

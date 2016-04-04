@@ -1,4 +1,5 @@
 /*css for navigation bar*/
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -23,53 +24,90 @@ li a {
 li a:hover {
     color: #1da73b;
 }
+
 .active {
     background-color: #4CAF50;
 }
-#nav_bar{
+
+#nav_bar {
     height: 100px;
     text-align: center;
 }
-#Heading{
+
+#Heading {
     text-align: center;
 }
 
 
 /*css for the tables*/
 
-#frame{ 
-/*width: 672px; background: url('../images/border-big.png') 0 0;*/
- height: 672px; 
- display: table-cell; 
- vertical-align: middle; 
- text-align: center; 
+#frame {
+    /*width: 672px; background: url('../images/border-big.png') 0 0;*/
+    height: 672px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
 }
-.frame_wrap{ 
-width: 672px; margin: 25px auto; 
+
+.frame_wrap {
+    width: 672px;
+    margin: 25px auto;
 }
 
 .active {
     background-color: #4CAF50;
 }
 
+
 /*css for the tables*/
-#content { 
-border-bottom: 1px solid #111; 
-padding-bottom: 50px; 
+
+#content {
+    border-bottom: 1px solid #111;
+    padding-bottom: 50px;
 }
+
 .content_wrap {
- width: 736px; 
- margin: 0 auto;
-  overflow: hidden;
-   }
-#frame                  { width: 672px; background: url('../images/border_large_image.png') 0 0; height: 672px; display: table-cell; vertical-align: middle; text-align: center; }
-.frame_wrap              { width: 672px; margin: 25px auto; }
-.frame_wrap p            { text-align: center; }
+    width: 736px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#frame {
+    width: 672px;
+    /*background: url('../images/border_large_image.png') 0 0;*/
+    height: 672px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.frame_wrap {
+    width: 672px;
+    margin: 25px auto;
+}
+
+.frame_wrap p {
+    text-align: center;
+}
+
 
 /* Thumbs */
-.thumbnail_frame             { width: 180px; background: url('../images/border_thumbnail.png') 0 0; height: 174px; display: table-cell; vertical-align: middle; text-align: center; }
-.thumbnail_wrap              { width: 180px; float: left; margin: 15px 30px; }
-.thumbnail_wrap p            { margin-bottom: 5px; }
 
+.thumbnail_frame {
+    width: 180px;
+    /*background: url('../images/border_thumbnail.png') 0 0;*/
+    height: 174px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
 
+.thumbnail_wrap {
+    width: 180px;
+    float: left;
+    margin: 15px 30px;
+}
 
+.thumbnail_wrap p {
+    margin-bottom: 5px;
+}

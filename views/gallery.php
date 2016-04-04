@@ -29,7 +29,7 @@ $photos=photograph::find_all();
 	    	$output.=$photo->title;
 	    	$output.='<p>';
 	    	$output.='<a href="'."image_larger_version.php?id=".$photo->id.'">';
-	    	$output.='<img src="'.htmlentities($photo->image_path2()).'">';
+	    	$output.='<img src="'.htmlentities($photo->thumb_image_path()).'">';
 	    	$output.='</div>';
 	    	$output.='</div>';  	
 	    endforeach;
