@@ -13,10 +13,10 @@ $photos=photograph::find_all();
 // echo "</pre>";
 // echo $JSON;
 // 
-$upsoloutDIR=dirname(dirname(__FILE__));
+// $upsoloutDIR=dirname(dirname(__FILE__));
 
-echo dirname(dirname(__FILE__));
-echo "<br/>";
+// echo dirname(dirname(__FILE__));
+// echo "<br/>";
 //echo $upsoloutDIR;
 //echo absolute;
 

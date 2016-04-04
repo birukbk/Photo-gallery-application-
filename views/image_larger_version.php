@@ -1,5 +1,6 @@
 <?php 
 // include(dirname(dirname(__FILE__))."/includes/head.html");
+//include(dirname(dirname(__FILE__))."/includes/head.html");
 include(dirname(dirname(__FILE__))."/includes/initialize.php");
 
         if (empty($_GET['id'])) {
@@ -12,8 +13,8 @@ include(dirname(dirname(__FILE__))."/includes/initialize.php");
             $output.='<div id="content">';
 		    $output.='<div class="content_wrap">';
 	    	$output.='<p>';
-	    	// $output.='<div class="thumbnail_wrap">';
-			// $output.='<div class="thumbnail_frame">';
+	    	$output.='<div class="thumbnail_wrap">';
+			$output.='<div class="thumbnail_frame">';
 	    	$output.='Title:';
 	    	$output.=$photo->title;
 	    	$output.='<p>';
@@ -29,26 +30,27 @@ include(dirname(dirname(__FILE__))."/includes/initialize.php");
 
 
 $content="";
-$tpl_head=file_get_contents('../includes/head.html');
-$tpl = file_get_contents('../templates/template.html');
-$page_footer=file_get_contents('../includes/footer.html');
+$content= $output;
+// $tpl_head=file_get_contents('../includes/head.html');
+// $tpl = file_get_contents('../templates/template.html');
+// $page_footer=file_get_contents('../includes/footer.html');
 
 
 // $heading = "THE BIG PICTURE";
-$gallery_content= $output;
+// $gallery_content= $output;
 
 //parse a template and populate it with values
-$page_header=parseTemplate($tpl_head,array('{{ page_heading }}' => $heading));
-$gallery_PageContent=parseTemplate($tpl, array( 
-                                    '{{ page_title }}' => $title ,
-                                    '{{ page_heading }}' => $heading,
-                                    '{{ content }}' => $gallery_content));
+//$page_header=parseTemplate($tpl_head,array('{{ page_heading }}' => $heading));
+// $gallery_PageContent=parseTemplate($tpl, array( 
+//                                     '{{ page_title }}' => $title ,
+//                                     '{{ page_heading }}' => $heading,
+//                                     '{{ content }}' => $gallery_content));
 									
 									
 
-$content.=$page_header;
-$content.=$gallery_PageContent;
-$content.=$page_footer;
+// $content.=$page_header;
+// $content.=$gallery_PageContent;
+// $content.=$page_footer;
 
 echo $content;
 ?>
