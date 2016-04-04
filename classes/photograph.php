@@ -142,7 +142,7 @@ class Photograph{
 			//$this->id = $database->insert_id();
 			//echo $sql;
 			$stmt->close();
-            echo $database->insert_id();
+           
 			//echo $sql;
 	       if($database->insert_id()!=0) {
 	          return true;

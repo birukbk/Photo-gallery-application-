@@ -36,13 +36,15 @@ $photos=photograph::find_all();
 	        $output.='</div>';
 	        $output.='</div>';
 
+	        echo $photo->thumb_image_path();
+
 
 
 
 $content="";
-$tpl_head=file_get_contents('../includes/head.html');
-$tpl = file_get_contents('../templates/template.html');
-$page_footer=file_get_contents('../includes/footer.html');
+$tpl_head=file_get_contents('includes/head.html');
+$tpl = file_get_contents('templates/template.html');
+$page_footer=file_get_contents('includes/footer.html');
 
 $title = 'Photo gallery';
 $heading = 'Photo gallery application';
@@ -59,7 +61,7 @@ $content.=$page_header;
 $content.=$gallery_PageContent;
 $content.=$page_footer;
 
-echo $content;
+// echo $content;
 ?>
 	
 
