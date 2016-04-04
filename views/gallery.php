@@ -3,7 +3,20 @@
 include(dirname(dirname(__FILE__))."/includes/initialize.php");
 
 $photos=photograph::find_all();
-        
+// echo "<pre>";
+// print_r($photos);
+// echo "</pre>";
+// $JSON = json_encode($photos);
+
+// echo "<pre>";
+// echo $JSON;
+// echo "</pre>";
+// echo $JSON;
+// 
+
+
+
+// ___________________________________________________________________________________        
         $output ='';
 		foreach ($photos as $photo) :
 	    	$output.='<p>';
@@ -23,7 +36,7 @@ $tpl = file_get_contents('../templates/template.html');
 $page_footer=file_get_contents('../includes/footer.html');
 
 $title = 'Photo gallery';
-$heading = 'Welcome to the Cool Photo gallery application';
+$heading = 'Photo gallery application';
 $gallery_content= $output;
 
 //parse a template and populate it with values

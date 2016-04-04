@@ -28,34 +28,64 @@ li a:hover {
 
 /*css for the tables*/
 
+#frame{ 
+/*width: 672px; background: url('../images/border-big.png') 0 0;*/
+ height: 672px; 
+ display: table-cell; 
+ vertical-align: middle; 
+ text-align: center; 
+}
+.frameWrap{ 
+width: 672px; margin: 25px auto; 
+}
 
-.contentTable,.welcom_contentTable
-{
-	border:0.5px solid black;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
 }
-.contentTable td,.contentTable th
-{
-	border-left:1px solid black;
-	border-top:1px solid black;
-	text-align:left;
+
+li {
+    float: left;
 }
-.contentTable th
-{
-	background-color:#1da73b;
-	text-align: center;
+
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
-.contentTable td:last-child
-{
-	text-align: center;	
+
+li a:hover {
+    color: #1da73b;
 }
-.welcom_contentTable{
-	width: 50%;
-	border-bottom: 1px solid black;
+.active {
+    background-color: #4CAF50;
 }
-.welcom_contentTable th
-{
-	background-color:#1da73b;
-	text-align: center;
+
+/*css for the tables*/
+
+.thumbframe             
+{ 
+/*width: 160px; background: url('../images/border-small.png') 0 0;*/
+ height: 174px; display: table-cell; 
+ vertical-align: left; 
+ text-align: center; }
+.thumbWrap              
+{ width: 174px; 
+    float: left; 
+    margin: 15px 5px; 
+}
+.thumbWrap p 
+{ 
+    margin-bottom: 5px; 
+}
+.UploadForm{
+    
+
 }
 
 
