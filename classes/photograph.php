@@ -137,13 +137,9 @@ class Photograph{
 			// The string 'ssiss' in the following means 'string, string, int, string, string'
 			//  and describes the types of the parameters.
 			$stmt->bind_param('ssiss',$filename,$type,$size,$description,$title);
-			 
 			$stmt->execute();
-			//$this->id = $database->insert_id();
-			//echo $sql;
 			$stmt->close();
            
-			//echo $sql;
 	       if($database->insert_id()!=0) {
 	          return true;
 	  } else {
@@ -159,8 +155,7 @@ class Photograph{
 	public function thumb_image_path_600x600() {
 	return $this->upload_dir_thumbnail_600x600.DS.$this->filename;
 	}
-
-  // -------------------------------------------------------------------------------
+	
 	public static function find_all() {
     global $database;
     $sql="SELECT * FROM ".self::$table_name;

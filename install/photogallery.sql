@@ -1,3 +1,5 @@
+
+
 CREATE TABLE photographgallery (
 id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 filename varchar (255) NOT null,
@@ -13,5 +15,3 @@ INSERT INTO photographgallery (filename,type,size,description,title)
 VALUES ('flower','jpg','12','beautiful flower','blue flower');
 
 
-
-SELECT filename,title FROM photographgallery;

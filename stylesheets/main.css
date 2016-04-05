@@ -39,10 +39,9 @@ li a:hover {
 }
 
 
-/*css for the tables*/
+/*css for framing the pictures */
 
 #frame {
-    /*width: 672px; background: url('../images/border-big.png') 0 0;*/
     height: 672px;
     display: table-cell;
     vertical-align: middle;
@@ -57,9 +56,6 @@ li a:hover {
 .active {
     background-color: #4CAF50;
 }
-
-
-/*css for the tables*/
 
 #content {
     border-bottom: 1px solid #111;
