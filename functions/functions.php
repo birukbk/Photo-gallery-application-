@@ -8,7 +8,6 @@ function redirectTo($location = NULL){
 	}
 }
 
-
 function processUpload($file, $dir) {
     $message="";
 if(isset($_POST['submit'])) {
