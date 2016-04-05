@@ -1,6 +1,11 @@
 <?php 
 include(dirname(dirname(__FILE__))."/includes/initialize.php");
-
+/**
+ * saves uploaded photo to uploads folder
+ * @param  [type] $file [$_FILE]
+ * @param  [type] $dir  [path]
+ * @return [type]       [message]
+ */
 function processUpload($file, $dir) {
     $message="";
 if(isset($_POST['submit'])) {
