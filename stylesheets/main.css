@@ -74,7 +74,6 @@ li a:hover {
 
 #frame {
     width: 672px;
-    /*background: url('../images/border_large_image.png') 0 0;*/
     height: 672px;
     display: table-cell;
     vertical-align: middle;
@@ -95,7 +94,6 @@ li a:hover {
 
 .thumbnail_frame {
     width: 180px;
-    /*background: url('../images/border_thumbnail.png') 0 0;*/
     height: 174px;
     display: table-cell;
     vertical-align: middle;
