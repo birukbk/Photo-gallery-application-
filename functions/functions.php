@@ -25,7 +25,6 @@ if(isset($_POST['submit'])) {
 echo  $message;
  }
 
-
 function outputMessage($message=""){
 	if (!empty($message)) {
 		return "<p class=\"message\">{$message}</p>";

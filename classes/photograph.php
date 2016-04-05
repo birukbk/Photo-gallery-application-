@@ -213,7 +213,6 @@ class Photograph{
 	  }
 	  return $attributes;
 	}
-	
 	//resize image.
 	//reperpused function from hands on example
 	public function img_resize($in_img_file, $out_img_file, $req_width, $req_height, $quality) {
