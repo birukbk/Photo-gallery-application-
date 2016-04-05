@@ -1,8 +1,6 @@
 <?php
 include(dirname(dirname(__FILE__))."/includes/initialize.php");
 class MySQLDatabase {
-
-
     private $connection;
 
     function __construct($db_host, $username, $password, $db) {
