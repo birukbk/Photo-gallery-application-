@@ -19,7 +19,8 @@ class Photograph{
     public $errors=array();
 
     protected $upload_errors = array(
-		// http://www.php.net/manual/en/features.file-upload.errors.php
+	  
+	  // http://www.php.net/manual/en/features.file-upload.errors.php
 	  UPLOAD_ERR_OK 				=> "No errors.",
 	  UPLOAD_ERR_INI_SIZE  	=> "Larger than upload_max_filesize.",
 	  UPLOAD_ERR_FORM_SIZE 	=> "Larger than form MAX_FILE_SIZE.",
@@ -29,8 +30,13 @@ class Photograph{
 	  UPLOAD_ERR_CANT_WRITE => "Can't write to disk.",
 	  UPLOAD_ERR_EXTENSION 	=> "File upload stopped by extension."
 	);
-
+  
 	// Pass in $_FILE(['uploaded_file']) as an argument
+	/**
+	 * attach file properties to objct
+	 * @param  $_FILE(['uploaded_file'])
+	 * @return [boolean]       [returns true or error ]
+	 */
   public function attach_file($file) {
 		// error checking on the form parameters
 		if(!$file || empty($file) || !is_array($file)) {
@@ -51,6 +57,12 @@ class Photograph{
 
 		}
 	}
+
+	/**
+	 * save uploaded file, and update database.
+	 * @return [boolean, error] [attempt to move file to uploads folder,
+	 * saves to database, resize image to 150x150 and 600x600 and move them thier folder.]
+	 */
 		public function save() {
 		if(isset($this->id)) {
 			$this->update();
@@ -119,7 +131,10 @@ class Photograph{
 			}
 		}
 	}
-
+       /**
+        * insert into database
+        * @return [boolean] [excute the prepared statement return true if succesfull else false]
+        */
 		public function create() {
 
 		  global $database;
@@ -146,16 +161,34 @@ class Photograph{
 	    return false;
 	  }
 	}
+	/**
+	 * retuns the image path
+	 * @return [string] [the path of object]
+	 */
 	public function image_path() {
 	return $this->upload_dir.DS.$this->filename;
 	}
+	/**
+	 * retuns the image path for thumbnail
+	 * @return [string] [the path of object]
+	 */
 	public function thumb_image_path() {
 	return $this->upload_dir_thumbnail.DS.$this->filename;
 	}
+
+	/**
+	 * retuns the image path for 600x600 image
+	 * @return [string] [the path of object]
+	 */
 	public function thumb_image_path_600x600() {
 	return $this->upload_dir_thumbnail_600x600.DS.$this->filename;
 	}
+
 	
+	/**
+	 * fetch all data from the db.
+	 * @return [object] [performs the select all query.]
+	 */
 	public static function find_all() {
     global $database;
     $sql="SELECT * FROM ".self::$table_name;
@@ -166,6 +199,8 @@ class Photograph{
     }
     return $object_array;
   }
+
+
 
   public static function find_by_id($id=0) {
     $result_array = self::find_by_sql("SELECT * FROM ".self::$table_name." WHERE id={$id} LIMIT 1");

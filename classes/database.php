@@ -18,6 +18,8 @@ class MySQLDatabase {
             mysqli_close($this->connection);
         }
     }
+
+    //database related process as database agnostic as possible
     public function query($sql){
       $result = mysqli_query($this->connection,$sql);
       if (!$result) {
