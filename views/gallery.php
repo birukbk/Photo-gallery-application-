@@ -2,25 +2,7 @@
 // include(dirname(dirname(__FILE__))."/includes/head.html");
 include(dirname(dirname(__FILE__))."/includes/initialize.php");
 
-$photos=photograph::find_all();
-// echo "<pre>";
-// print_r($photos);
-// echo "</pre>";
-// $JSON = json_encode($photos);
-
-// echo "<pre>";
-// echo $JSON;
-// echo "</pre>";
-// echo $JSON;
-// 
-// $upsoloutDIR=dirname(dirname(__FILE__));
-
-// echo dirname(dirname(__FILE__));
-// echo "<br/>";
-//echo $upsoloutDIR;
-//echo absolute;
-
-// ___________________________________________________________________________________        
+$photos=photograph::find_all();      
     
 	       $output ='';
 	       $output.='<div id="content">';
@@ -40,9 +22,6 @@ $photos=photograph::find_all();
 	    endforeach;
 	        $output.='</div>';
 	        $output.='</div>';
-
-
-
 
 
 
