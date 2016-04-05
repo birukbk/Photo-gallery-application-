@@ -1,6 +1,5 @@
 <?php 
-// include(dirname(dirname(__FILE__))."/includes/head.html");
-//include(dirname(dirname(__FILE__))."/includes/head.html");
+
 include(dirname(dirname(__FILE__))."/includes/initialize.php");
 
         if (empty($_GET['id'])) {
@@ -31,9 +30,9 @@ include(dirname(dirname(__FILE__))."/includes/initialize.php");
 
 $content="";
 $content= $output;
-// $tpl_head=file_get_contents('../includes/head.html');
+$tpl_head=file_get_contents('../includes/head.html');
 // $tpl = file_get_contents('../templates/template.html');
-// $page_footer=file_get_contents('../includes/footer.html');
+$page_footer=file_get_contents('../includes/footer.html');
 
 
 // $heading = "THE BIG PICTURE";
