@@ -1,5 +1,4 @@
 <?php 
-//include(dirname(dirname(__FILE__))."/includes/head.html");
 include(dirname(dirname(__FILE__))."/includes/initialize.php");
 
         if (empty($_GET['id'])) {
@@ -33,7 +32,6 @@ include(dirname(dirname(__FILE__))."/includes/initialize.php");
 
 
 $content="";
-//$content= $output;
 $tpl = file_get_contents('../templates/template.html');
 $page_footer=file_get_contents('../includes/footer.html');
 
@@ -43,7 +41,7 @@ $gallery_content= $output;
 
 //parse a template and populate it with values
 $page_header=parseTemplate($tpl_head,array('{{ page_heading }}' => $heading));
-$gallery_PageContent=parseTemplate($tpl, array( 
+$larger_version_image=parseTemplate($tpl, array( 
                                     '{{ page_title }}' => $title ,
                                     '{{ page_heading }}' => $heading,
                                     '{{ content }}' => $gallery_content));
@@ -51,7 +49,7 @@ $gallery_PageContent=parseTemplate($tpl, array(
 									
 
 $content.=$page_header;
-$content.=$gallery_PageContent;
+$content.=$larger_version_image;
 $content.=$page_footer;
 
 echo $content;

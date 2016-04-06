@@ -31,7 +31,7 @@ class MySQLDatabase {
     //to check the query worked as expected.
     private function confirmQuery($result){
       if (!$result) {
-        die("Database query ffailed!");
+        die("Database query failed!");
       }
     }  
   public function fetch_array($result_set) {
