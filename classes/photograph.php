@@ -106,7 +106,6 @@ class Photograph{
 			// Attempt to move the file 
 			if(move_uploaded_file($this->temp_path, $target_path)) {
 					
-		  	
 				// Save a corresponding entry to the database
 				if($this->create()) {
 					$dir=opendir('uploads/');
@@ -114,14 +113,11 @@ class Photograph{
 					if ($name!='.'&& $name!='..') {
 					$thumb=$this->img_resize('uploads/'.$name,'thumbnails/'.$name,150,150,90);
 					$thumb=$this->img_resize('uploads/'.$name,'thumbnails/600x600/'.$name,606,600,90);
-					//echo '<img src="thumbnails/'.$name.'"width="'.$thumb[2].'"height="'.$thumb[3].'"/>';
-					//600x600
 						
 						}
 				}
 					// We are done with temp_path, the file isn't there anymore
 					unset($this->temp_path);
-					// print_r($thumb);
 					return true;
 				}
 			} else {
