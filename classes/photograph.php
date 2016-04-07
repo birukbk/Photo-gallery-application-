@@ -68,17 +68,26 @@ class Photograph{
 			$this->update();
 		} else {
 			// Make sure there are no errors
-			
-			// Can't save if there are pre-existing errors
 		  if(!empty($this->errors)) { return false; }
 		  
-			// check if the description is too long.
-		  if(strlen($this->description) > 255) {
-				$this->errors[] = "The description can only be 255 characters long.";
+		    //check if the title is empty
+			if(strlen($this->title) == null) {
+				$this->errors[] = "Plseas fill in the title, Title can't be empty.";
 				return false;
 			}
+			// check if the title is too long.
 			if(strlen($this->title) > 255) {
 				$this->errors[] = "The title can only be 255 characters long.";
+				return false;
+			}
+			//check if the description is empty
+			if(strlen($this->description) ==null) {
+				$this->errors[] = "Please fill in the description.";
+				return false;
+			}
+			// check if the description is too long.
+			if(strlen($this->description) > 255) {
+				$this->errors[] = "The description can only be 255 characters long.";
 				return false;
 			}
 		
