@@ -23,6 +23,8 @@
             // Display upload form
             case 2 : include("views/upload.php");
                 break;
+            case 3 : include("views/image_larger_version.php");
+                break;
 
             default: include("views/404.php");
         }

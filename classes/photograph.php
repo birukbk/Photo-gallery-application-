@@ -186,7 +186,7 @@ class Photograph{
 	 * @return [string] [the path of object]
 	 */
 	public function thumb_image_path_600x600() {
-	return $this->upload_dir_thumbnail_600x600.DS.$this->filename;
+	return $this->upload_dir_thumbnail.DS.$this->upload_dir_thumbnail_600x600.DS.$this->filename;
 	}
 
 	

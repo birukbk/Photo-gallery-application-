@@ -13,7 +13,7 @@ $photos=photograph::find_all();
 	    	$output.='<p>';
 	    	$output.=$photo->title;
 	    	$output.='<p>';
-	    	$output.='<a href="'."views/image_larger_version.php?id=".$photo->id.'">';
+	    	$output.='<a href="'."index.php?page=3&id=".$photo->id.'">';
 	    	$output.='<img src="'.htmlentities($photo->thumb_image_path()).'"  alt="'.$photo->filename.'">';
 	    	$output.='</a>';
 	    	$output.='</div>';

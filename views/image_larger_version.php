@@ -16,7 +16,7 @@ include(dirname(dirname(__FILE__))."/includes/initialize.php");
 	    	$output.='Title:&nbsp';
 	    	$output.=$photo->title;
 	    	$output.='<p>';
-	    	$output.='<a href="../index.php">';
+	    	$output.='<a href="index.php">';
 	    	$output.='<img src="'.htmlentities($photo->thumb_image_path_600x600()).'">';
 	    	$output.='<br/>';
 	    	$output.='</a>';
@@ -31,9 +31,11 @@ include(dirname(dirname(__FILE__))."/includes/initialize.php");
 	        $output.='</div>';
 
 
+
+
 $content="";
-$tpl = file_get_contents('../templates/template.html');
-$page_footer=file_get_contents('../includes/footer.html');
+$tpl = file_get_contents('templates/template.html');
+$page_footer=file_get_contents('includes/footer.html');
 
 
 $heading = "Larger version.";
@@ -52,7 +54,7 @@ $content.=$page_header;
 $content.=$larger_version_image;
 $content.=$page_footer;
 
-echo $content;
+// echo $content;
 ?>
 	
 
