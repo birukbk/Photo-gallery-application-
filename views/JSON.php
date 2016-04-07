@@ -12,7 +12,6 @@ if ($photo) {
 echo $result;
  }
  else{
- 	//echo "<h3>Sorry the requested id doesn't exist in our database!<br/>";
  	echo $lang['id does not exit in db'];
  }
 

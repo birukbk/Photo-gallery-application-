@@ -1,5 +1,6 @@
 <?php 
 include(dirname(dirname(__FILE__))."/includes/initialize.php");
+include(dirname(dirname(__FILE__))."/language/english.php");
 
 class Photograph{
 	protected static $table_name="photographgallery";
@@ -16,7 +17,8 @@ class Photograph{
     protected $upload_dir_thumbnail="thumbnails";
     protected $upload_dir_thumbnail_600x600="../thumbnails/600x600";
 
-    public $errors=array();
+ 
+   public $errors="";
 
     protected $upload_errors = array(
 	  
@@ -72,11 +74,15 @@ class Photograph{
 		  
 		    //check if the title is empty
 			if(strlen($this->title) == null) {
+		
+			
 				$this->errors[] = "Plseas fill in the title, Title can't be empty.";
+				
 				return false;
 			}
 			// check if the title is too long.
 			if(strlen($this->title) > 255) {
+				
 				$this->errors[] = "The title can only be 255 characters long.";
 				return false;
 			}
