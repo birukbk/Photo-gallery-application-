@@ -17,8 +17,7 @@ class Photograph{
     protected $upload_dir_thumbnail="thumbnails";
     protected $upload_dir_thumbnail_600x600="../thumbnails/600x600";
 
- 
-   public $errors="";
+   public $errors=array();
 
     protected $upload_errors = array(
 	  
