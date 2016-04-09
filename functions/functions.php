@@ -7,7 +7,7 @@ include(dirname(dirname(__FILE__))."/includes/initialize.php");
  * @return [type]       [message]
  */
 function processUpload($file, $dir) {
-    $message=array();
+    $message="";
 if(isset($_POST['submit'])) {
     $photo = new Photograph();
     $photo->attach_file($_FILES['file_upload']);
@@ -16,10 +16,8 @@ if(isset($_POST['submit'])) {
         $message = "File uploaded successfully.";
     }else
     {
-        print_r($photo->errors)  ;
-        $message = join("<br />",$photo->errors);
-
-        
+        //print_r($photo->errors)  ;
+        $message = join("<br />",$photo->errors);      
     }
 } 
 echo  $message;

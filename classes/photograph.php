@@ -112,7 +112,7 @@ class Photograph{
 		  }
 		  //check if the file is jpeg type
 		  if ($this->type!="image/jpeg") {
-		  	$this->errors[] = "The file {$this->filename} is not an image!";
+		  	$this->errors[] = "The file {$this->filename} is not an image! or not an image of type jpeg";
 				return false;
 		  	
 		  }
@@ -265,12 +265,6 @@ class Photograph{
         switch ($type) {
             case IMAGETYPE_JPEG:
                 $src = @imagecreatefromjpeg($in_img_file);
-                break;
-            case IMAGETYPE_PNG:
-                $src = @imagecreatefrompng($in_img_file);
-                break;
-            case IMAGETYPE_GIF:
-                $src = @imagecreatefromgif($in_img_file);
                 break;
             default:
                 $error = "Image is not a gif, png or jpeg.";
