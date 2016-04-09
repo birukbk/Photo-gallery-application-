@@ -6,31 +6,7 @@ include(dirname(dirname(__FILE__))."/includes/initialize.php");
         }
        
       
- $photo=photograph::find_by_id($_GET['id']);
-   //          $output ='';
-   //          $output.='<div id="content">';
-		 //    $output.='<div class="content_wrap">';
-	  //   	$output.='<p>';
-	  //   	$output.='<div class="thumbnail_wrap">';
-			// $output.='<div class="thumbnail_frame">';
-	  //   	$output.='Title:&nbsp';
-	  //   	$output.=$photo->title;
-	  //   	$output.='<p>';
-	  //   	$output.='<a href="index.php">';
-	  //   	$output.='<img src="'.htmlentities($photo->thumb_image_path_600x600()).'">';
-	  //   	$output.='<br/>';
-	  //   	$output.='</a>';
-	  //   	$output.='Description:&nbsp';
-	  //   	$output.=$photo->description;
-	  //       $output.='<br/>';
-	  //       $output.='image id:&nbsp';
-	  //   	$output.=$photo->id;
-	  //   	$output.='<br/>';
-	  //   	$output.='</p>';
-	  //   	$output.='</div>';
-	  //       $output.='</div>';
-
-
+$photo=photograph::find_by_id($_GET['id']);
 
 $photo_title=$photo->title;
 $photo_thumb_image_path_600x600=htmlentities($photo->thumb_image_path_600x600());

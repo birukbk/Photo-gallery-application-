@@ -24,7 +24,9 @@ li a {
 li a:hover {
     color: #1da73b;
 }
-
+h1{
+    text-align: center;
+}
 .active {
     background-color: #4CAF50;
 }
@@ -33,12 +35,6 @@ li a:hover {
     height: 100px;
     text-align: center;
 }
-
-#Heading {
-    text-align: center;
-}
-
-
 /*css for framing the pictures */
 
 #frame {
