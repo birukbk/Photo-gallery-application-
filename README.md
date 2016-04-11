@@ -24,6 +24,10 @@ The photo gallery application includes the following aspects:
 		enlarged if they are smaller than this size to begin with.
 	4.  Any user can upload their own images to be included in the gallery. Only valid JPEG
 		images are accepted.
+
+Web service
+
+================================
 	5. The application  include a simple JSON web service that can be used to retrieve
 		the title, description, filename, width and height of the large version of any image that
 		has been uploaded to the application. The data will be returned from the service
