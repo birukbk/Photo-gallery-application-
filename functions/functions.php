@@ -39,4 +39,15 @@ function parseTemplate($tpl, $placeholders) {
     $content .= $pass;
     return $content;
 }
+/**
+ * redirects to the given page
+ * @param  [type] page to redirct too 
+ * 
+ */
+function redirect_to( $location = NULL ) {
+  if ($location != NULL) {
+    header("Location: {$location}");
+    exit;
+  }
+}
  ?>

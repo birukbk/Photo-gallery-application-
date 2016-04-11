@@ -28,6 +28,7 @@ The photo gallery application includes the following aspects:
 Web service
 
 ================================
+	
 	5. The application  include a simple JSON web service that can be used to retrieve
 		the title, description, filename, width and height of the large version of any image that
 		has been uploaded to the application. The data will be returned from the service
@@ -69,5 +70,6 @@ Deploy the sql file included.
 
 make sure all the included files are on the right path,
 see the config file that is included.
+
 
 

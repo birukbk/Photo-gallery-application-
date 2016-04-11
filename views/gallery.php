@@ -42,8 +42,6 @@ $gallery_PageContent=parseTemplate($tpl, array(
 $content.=$page_header;
 $content.=$gallery_PageContent;
 $content.=$page_footer;
-
-// echo $content;
 ?>
 	
 
