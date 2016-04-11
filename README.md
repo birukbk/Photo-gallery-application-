@@ -35,7 +35,10 @@ The photo gallery application includes the following aspects:
 		this will return the title,description, filename, width and height of the image.
 		the id can be found either on the top url(example id=1) of the larger image or simply click on the thumbnail of
 		any image and when the larger version of the image appears next to the description of the image you will
-		find the id.(listed as Photo id:1)
+		find the id.(listed as Photo id:1).
+	6.The application is built with portability in mind.It can be easily be deployed to alternative environments and/or 
+		locales.
+	7.the application validates to the specified DOCTYPE.
 
 
 
