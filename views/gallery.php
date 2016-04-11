@@ -2,9 +2,6 @@
 include(dirname(dirname(__FILE__))."/includes/initialize.php");
 
 $photos=photograph::find_all();      
-           // $ll= $lang['no_title'];
-           // var_dump($ll);
-           //echo $ll;
 	       $output ='';
 	       $output.='<div id="content">';
 		   $output.='<div class="content_wrap">';

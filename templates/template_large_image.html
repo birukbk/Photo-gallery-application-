@@ -1,29 +1,19 @@
-   		<h1>{{ page_heading }}</h1>
-
-
-
-          <div id="content">
-		  <div class="content_wrap">
-	    	<p>
-	    	<div class="thumbnail_wrap">
-			<div class="thumbnail_frame">
-	    	{{ photo_title }}
-	    	<p>
-	    	<a href="index.php">
-	    	<img src="{{ photo_thumb_image_path_600x600 }}">
-	    	<br/>
-	    	</a>
-	    	<p>
-	    	{{ photo_description }}
-	       
-	        <h4>photo id: {{ photo_id }}</h4>
-	    	<br/>
-	    	</p>
-	    	</div>
-	        </div>
-
-		
-
-		
-
-
+<h1>{{ page_heading }}</h1>
+<div id="content">
+    <div class="content_wrap">
+        <p>
+            <div class="thumbnail_wrap">
+                <div class="thumbnail_frame">
+                    {{ photo_title }}
+                    <p>
+                        <a href="index.php">
+                            <img src="{{ photo_thumb_image_path_600x600 }}">
+                            <br/>
+                        </a>
+                        <p>
+                            {{ photo_description }}
+                            <h4>photo id: {{ photo_id }}</h4>
+                            <br/>
+                        </p>
+                </div>
+            </div>

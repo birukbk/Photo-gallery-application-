@@ -16,7 +16,6 @@ if(isset($_POST['submit'])) {
         $message = "File uploaded successfully.";
     }else
     {
-        //print_r($photo->errors)  ;
         $message = join("<br />",$photo->errors);      
     }
 } 

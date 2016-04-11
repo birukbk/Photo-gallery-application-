@@ -74,9 +74,7 @@ class Photograph{
 		    //check if the title is empty
 			if(strlen($this->title) == null) {
 		
-			
 				$this->errors[] = "Plseas fill in the title, Title can't be empty.";
-				
 				return false;
 			}
 			// check if the title is too long.
