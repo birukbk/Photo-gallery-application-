@@ -1,16 +1,13 @@
-Building Web Applications using MySQL and PHP (W1)
-A simple on-line photo gallery application using PHP and MySQL.
+   
+    Building Web Applications using MySQL and PHP (W1)
+	
+	A simple on-line photo gallery application using PHP and MySQL.
+	Deploy Location
+	================
+	http://titan.dcs.bbk.ac.uk/~bgebre04/w1fma/index.php
 
-
-Deploy Location
-
-================
-http://titan.dcs.bbk.ac.uk/~bgebre04/w1fma/index.php
-
-Description
-
-================================
-The photo gallery application includes the following aspects:
+	Description
+	photo gallery application includes the following aspects:
 	1. Each image is associated with a textual title and description.
 	2. The default application home page displays thumbnails of all the images that have
 		been uploaded. Thumbnails measure 150px by 150px, and the
@@ -25,10 +22,9 @@ The photo gallery application includes the following aspects:
 	4.  Any user can upload their own images to be included in the gallery. Only valid JPEG
 		images are accepted.
 
-Web service
+		Web services
+		================================
 
-================================
-	
 	5. The application  include a simple JSON web service that can be used to retrieve
 		the title, description, filename, width and height of the large version of any image that
 		has been uploaded to the application. The data will be returned from the service
@@ -45,31 +41,27 @@ Web service
 		locales.
 	7.the application validates to the specified DOCTYPE.
 
+	Installation
+	============================
+	for the application to work the necessary database table needs to be created form the included sql file 
+	in the install folder.
+
+	found in the install folder photogallery.sql)
+	the config file contains all the credentials for the database to work.
+	the right credentials must be replaced. such as database host, database name, database user
+	and database password.
+	
+	Configuration
+	===========================
+	Deploy the sql file included.
+	make sure all the included files are on the right path,
+	see the config file that is included.
+	sample image from
+	pixabay.com
 
 
-Installation
-
-============================
-
-for the application to work the necessary database table needs to be created form the included sql file 
-in the install folder.
-
-(found in the install folder photogallery.sql)
-the config file contains all the credentials for the database to work.
-
-the right credentials must be replaced. such as database host, database name, database user
-and database password.
 
 
-Configuration
-
-
-===========================
-
-Deploy the sql file included.
-
-make sure all the included files are on the right path,
-see the config file that is included.
 
 
 
